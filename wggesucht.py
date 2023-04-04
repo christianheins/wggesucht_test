@@ -23,6 +23,7 @@ def main():
         [
             Page(page_real_estate_general_dashboard, "General Dashboard", "🏠"),
             Page(page_maps, "Maps", "🏠"),
+        ]
     )
 
     with st.sidebar:
