@@ -137,7 +137,7 @@ with col2:
     print("File created")
     st.markdown("""
         <style>
-            .float-child {
+            .map-div {
             height: 500px;
             width: 800px;
             border-radius: 20px;
