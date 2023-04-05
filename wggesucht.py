@@ -501,10 +501,10 @@ def main():
         with open("df_concat.csv") as f:
             st.write(f)
 
-        path = r"E:\demos\files_demos\sample.txt"
+        path = r"df_concat.csv"
 
         # file modification timestamp of a file
-        m_time = os.path.getmtime("df_concat.csv")
+        m_time = os.path.getmtime(path)
         # convert timestamp into DateTime object
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%m/%d/%Y, %H:%M:%S")
         st.write(f'Modified on: {dt_m}')
