@@ -32,6 +32,8 @@ def main():
         ]
     )
 
+    nameofdataframe = r"df_concat2.csv"
+
     with st.sidebar:
         st.sidebar.header("Sections")
         selected = option_menu(
@@ -492,8 +494,6 @@ def main():
 
             df_concat["Latitude"] = latitudes
             df_concat["Longitude"] = longitudes
-
-            nameofdataframe = r"df_concat2.csv"
             df_concat.to_csv(f"{nameofdataframe}")
             st.write(f"Dataframe with name {nameofdataframe} created.")
             button_pressed = False
