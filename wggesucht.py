@@ -31,7 +31,7 @@ def main():
     show_pages(
         [
             Page(page_real_estate_general_dashboard, "General Dashboard", "🏠"),
-            Page(page_maps, "Other Dashboard", "🏠"),
+            Page(page_maps, "Maps", "🏠"),
         ]
     )
 
