@@ -510,19 +510,24 @@ def main():
             repo_name = "wggesucht"
             g = Github(access_token)
             repo = g.get_user().get_repo(repo_name)
-            contents = repo.get_contents(nameofdataframe)
-            latest_commit_sha = contents.sha
-
             csv_file = pd.read_csv(nameofdataframe)
             csv_file_string = csv_file.to_csv(index=False)
-            csv_file_content = InputFileContent(csv_file)
-
+            csv_file_content = InputFileContent(csv_file_string)
             csv_file_content_str = str(csv_file_content)
-            repo.update_file(nameofdataframe, "Commit message", csv_file_content, sha=latest_commit_sha)
 
+            contents = repo.get_contents(nameofdataframe)
+
+            repo.delete_file(nameofdataframe, "remove dataframe", contents.sha, branch="main")
+            repo.create_file(nameofdataframe, "upload new dataframe", csv_file_string)
             st.write(f"Dataframe with name {nameofdataframe} uploaded.")
             # Notify the user that the file has been updated
             st.success(f"The file {nameofdataframe} has been updated!")
+            button_pressed = False
+
+            if button_pressed:
+                st.write("Processing...")
+            else:
+                st.write("Ready to refresh again!")
 
         #Specify a path
         path = nameofdataframe
