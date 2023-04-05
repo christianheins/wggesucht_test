@@ -535,7 +535,7 @@ def main():
         m_time = os.path.getctime(path)
         # convert timestamp into DateTime object
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
-        st.write(f'Modified on: {dt_m}')
+        st.write(f'File last created on: {dt_m}')
 
     df_concat = pd.read_csv(nameofdataframe)
 
