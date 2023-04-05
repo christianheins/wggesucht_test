@@ -463,7 +463,7 @@ def main():
                     print("Schöneberg")
                     neighbourhoods_clean.append("Schöneberg")
 
-                 elif str(neighbourhood).__contains__("Spandau"):
+                elif str(neighbourhood).__contains__("Spandau"):
                     print("Spandau")
                     neighbourhoods_clean.append("Spandau")
 
