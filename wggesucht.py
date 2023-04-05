@@ -11,7 +11,11 @@ def main():
     pd.set_option('display.max_columns', None)
 
     #Streamlit
-    st.set_page_config(page_title="WG Gesucht Analysis", layout="wide")
+    st.set_page_config(page_title="WG Gesucht Analysis", layout="wide", menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    })
     st.markdown("<h1 style='text-align: center; color: orange;'>Property Analysis</h1>", unsafe_allow_html=True)
 
     #Pages
