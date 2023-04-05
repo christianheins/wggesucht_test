@@ -518,7 +518,7 @@ def main():
             csv_file_content = InputFileContent(csv_file_string)
 
             csv_file_content_str = str(csv_file_content)
-            repo.update_file(nameofdataframe, "Commit message", csv_file_content_str, sha=latest_commit_sha)
+            repo.update_file(nameofdataframe, "Commit message", csv_file_content, sha=latest_commit_sha)
 
             st.write(f"Dataframe with name {nameofdataframe} uploaded.")
             # Notify the user that the file has been updated
