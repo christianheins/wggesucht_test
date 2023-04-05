@@ -493,7 +493,8 @@ def main():
             else:
                 st.write("Ready to refresh again!")
 
-
+        with open("df_concat.csv") as f:
+            st.write(f)
 
     df_concat = pd.read_csv("df_concat.csv")
 
