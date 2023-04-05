@@ -137,7 +137,7 @@ with col2:
     print("File created")
     st.markdown("""
         <style>
-        .css-1offfwp e16nr0p34 {
+        .StMarkdownContainer {
             height: 500px;
             width: 800px;
             border-radius: 20px;
