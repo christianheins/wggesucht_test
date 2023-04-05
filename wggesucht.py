@@ -582,7 +582,7 @@ def main():
         df_concat_neighbourhoods.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
 
         df_concat_endofleaseterm = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'Lease term']].pivot_table(index="Lease term", values="Eintrag", aggfunc="count").reset_index()
-        df_concat_endofleaseterm.sort_values(by=["Eintrag"], ascending=[True], inplace=True)
+        df_concat_endofleaseterm.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
 
 
         col1, col2 = st.columns([0.6, 0.4])
