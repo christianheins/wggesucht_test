@@ -7,6 +7,7 @@ def main():
     import numpy as np
     import altair as alt
     import urllib.parse
+    import os
 
     pd.set_option('display.max_columns', None)
 
@@ -38,6 +39,7 @@ def main():
             orientation="vertical",
         )
 
+        #Create a button
         button_pressed = False
         st.markdown("""---""")
         st.markdown("<p style='text-align: center; color: red;'>Click to refresh the WGGesucht dataframe</p>", unsafe_allow_html=True)
@@ -384,6 +386,7 @@ def main():
             print(neighbourhoods_clean)
             '''
 
+            #Clean out neighbourhoods
             for neighbourhood in neighbourhoods_dirty:
                 print(str(neighbourhood))
 
@@ -453,12 +456,13 @@ def main():
 
                 else:
                     neighbourhoods_clean.append(("NA"))
-
-
             df_concat["Neighbourhood"] = neighbourhoods_clean
+
+            #Get periods of end dates
             df_concat['frei bis (Year - Month)'] = pd.to_datetime(df_concat['frei bis']).dt.to_period('M')
             print(neighbourhoods_clean)
 
+            #Get locations of each neighbourhood
             addresses = df_concat["Neighbourhood"].to_list()
             print(len(addresses))
 
@@ -495,6 +499,9 @@ def main():
 
     with open("df_concat.csv") as f:
         st.write(f)
+
+    time = os.path.getmtime("df_concat.csv")
+    st.write(time)
 
     df_concat = pd.read_csv("df_concat.csv")
 
