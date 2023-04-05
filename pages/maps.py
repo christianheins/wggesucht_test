@@ -68,7 +68,8 @@ st.sidebar.text("Hi!")
 
 st.markdown("<h3 style='text-align: center; color: orange;'>Maps 🦮</h3>", unsafe_allow_html=True)
 
-filename_csv_table_realestate_from_reporting = r"df_concat.csv"
+nameofdataframe = r"df_concat2.csv"
+filename_csv_table_realestate_from_reporting = nameofdataframe
 df_map = pd.read_csv(filename_csv_table_realestate_from_reporting)
 df_map.fillna(0, inplace=True)
 df_map["Latitude"] = df_map["Latitude"].astype(float)

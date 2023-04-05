@@ -493,7 +493,7 @@ def main():
             df_concat["Latitude"] = latitudes
             df_concat["Longitude"] = longitudes
 
-            nameofdataframe ="df_concat.csv"
+            nameofdataframe = r"df_concat2.csv"
             df_concat.to_csv(f"{nameofdataframe}")
             st.write(f"Dataframe with name {nameofdataframe} created.")
             button_pressed = False
@@ -504,14 +504,14 @@ def main():
                 st.write("Ready to refresh again!")
 
         #Specify a path
-        path = r"df_concat.csv"
+        path = nameofdataframe
         # file modification timestamp of a file
         m_time = os.path.getmtime(path)
         # convert timestamp into DateTime object
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%m/%d/%Y - %H:%M:%S")
         st.write(f'Modified on: {dt_m}')
 
-    df_concat = pd.read_csv("df_concat.csv")
+    df_concat = pd.read_csv(nameofdataframe)
 
     def add_logo():
         st.markdown(
