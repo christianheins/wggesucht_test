@@ -491,9 +491,16 @@ def main():
                     latitudes.append("Location not found: "+location)
                     longitudes.append("Location not found: "+location)
                     print("Location not found: "+location)
-
             df_concat["Latitude"] = latitudes
             df_concat["Longitude"] = longitudes
+
+            #Export file
+            if os.path.exists(nameofdataframe):
+                st.write("Deleting existing csv output file")
+                os.remove(nameofdataframe)
+            else:
+                st.write("No output file, continuing.")
+
             df_concat.to_csv(f"{nameofdataframe}")
             st.write(f"Dataframe with name {nameofdataframe} created.")
             button_pressed = False
