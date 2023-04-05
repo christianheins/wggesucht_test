@@ -498,11 +498,8 @@ def main():
             else:
                 st.write("Ready to refresh again!")
 
-        with open("df_concat.csv") as f:
-            st.write(f.)
-
+        #Specify a path
         path = r"df_concat.csv"
-
         # file modification timestamp of a file
         m_time = os.path.getmtime(path)
         # convert timestamp into DateTime object
