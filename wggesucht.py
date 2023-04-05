@@ -32,7 +32,7 @@ def main():
         ]
     )
 
-    nameofdataframe = r"df_concat.csv"
+    nameofdataframe = "df_concat.csv"
 
     with st.sidebar:
         st.sidebar.header("Sections")

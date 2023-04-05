@@ -136,7 +136,7 @@ with col2:
     map.save("output.html")
     print("File created")
 
-st.json(data)
+    #st.json(data)
 #folium.Marker(location=[dfmap["lat"], warehouserow["lon"]],tooltip=row["Property"], popup="example").add_to(map)
 #st_map = st_folium(map, width=1500, height=800)
 
