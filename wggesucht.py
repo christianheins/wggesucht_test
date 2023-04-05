@@ -369,7 +369,7 @@ def main():
 
             #Give eachrow a name
             def combine_names(row):
-                return row['Eintrag'] + '-' + row['Miete']  + '-' + row['EUR /SQM'] + ' ' + row['Neighbourhood']
+                return str(row['Eintrag']) + '-' + str(row['Miete'])  + '-' + str(row['EUR / SQM']) + ' ' + str(row['Stadtteil'])
 
             df_concat['Name'] = df_concat.apply(combine_names, axis=1)
 
