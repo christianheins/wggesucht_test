@@ -387,16 +387,6 @@ def main():
             neighbourhoods_dirty = df_concat["Stadtteil"].to_numpy().tolist()
             print(neighbourhoods_dirty)
 
-            '''
-            for neighbourhood in neighbourhoods_list:
-                for neighbourhood_dirty in neighbourhoods_dirty:
-                    if str(neighbourhood_dirty).__contains__(f"{neighbourhood}"):
-                        neighbourhoods_clean.append(f"{neighbourhood}")
-                    else:
-                        neighbourhoods_clean.append("NA")
-            print(neighbourhoods_clean)
-            '''
-
             #Clean out neighbourhoods
             for neighbourhood in neighbourhoods_dirty:
                 print(str(neighbourhood))
