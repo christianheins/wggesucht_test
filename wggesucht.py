@@ -16,7 +16,7 @@ def main():
 
     #Pages
     page_real_estate_general_dashboard = "wggesucht.py"
-    page_maps = "/pages/wggesucht2.py"
+    page_maps = "/pages/maps.py"
     page_payments = "/Users/christianheins/Documents/Coding/Projects/WGGesucht/pages/wggesucht3.py"
 
     show_pages(
