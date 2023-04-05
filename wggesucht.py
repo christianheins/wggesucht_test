@@ -367,8 +367,13 @@ def main():
             df_concat = pd.concat([df1, df2, df3, df4, df5])
             df_concat.reset_index(drop=True, inplace=True)
 
-            #Cleaning out the neighbourhoods
+            #Give eachrow a name
+            def combine_names(row):
+                return row['Eintrag'] + '-' + row['Miete']  + '-' + row['EUR /SQM'] + ' ' + row['Neighbourhood']
 
+            df_concat['Name'] = df_concat.apply(combine_names, axis=1)
+
+            #Cleaning out the neighbourhoods
             neighbourhoods = df_concat["Stadtteil"].unique()
             df_concat["Neighbourhood"] = ""
 
@@ -583,7 +588,7 @@ def main():
         col1, col2 = st.columns([0.6, 0.4])
         with col1:
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
-            st.write(df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
+            st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
 
         with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Neighbourghoods</h6>", unsafe_allow_html=True)

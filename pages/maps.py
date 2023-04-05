@@ -66,6 +66,79 @@ st.sidebar.header("Sections")
 
 st.sidebar.text("Hi!")
 
-st.markdown("<h1 style='text-align: center; color: red;'>Maps 🦮</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: orange;'>Maps 🦮</h3>", unsafe_allow_html=True)
+
+filename_csv_table_realestate_from_reporting = r"df_concat.csv"
+df_map = pd.read_csv(filename_csv_table_realestate_from_reporting)
+df_map.fillna(0, inplace=True)
+df_map["Latitude"] = df_map["Latitude"].astype(float)
+df_map["Longitude"] = df_map["Longitude"].astype(float)
+#df_map = df_map[["Latitude","Longitude","Country","Property Status", "Property"]]
+df_map.rename(columns = {"Latitude":"lat","Longitude":"lon"}, inplace = True)
+col1, col2 = st.columns([0.5, 1.5])
+
+with col1:
+    st.markdown("<h3 style='text-align: center; color: red;'>Filters 🎛️</h3>", unsafe_allow_html=True)
+    subsidiary = st.multiselect("Please choose a Country", options=df_map["Neighbourhood"].unique(), help="Please do not leave empty")
+    #df_filteredbysubsidiary = df_sheet_bills_sorted[df_sheet_bills_sorted["Subsidiary (no hierarchy)"] == subsidiary[0]]
+    df_filteredbysubsidiary = df_map[df_map["Neighbourhood"].isin(subsidiary)]
+    warehouse = st.multiselect("Please choose a property", options=df_filteredbysubsidiary["Property"].unique(), help="Please do not leave empty")
+    st.write("Selection:")
+    st.write(warehouse)
+    if subsidiary == []:
+        df_map = df_map
+    elif warehouse == []:
+        df_map = df_filteredbysubsidiary
+    else:
+        df_map = df_map[df_map["Property"].isin(warehouse)]
+
+    st.metric("Current Pure Rent:", df_map["Current Cold Rent in EUR"].reset_index(drop=True)[0])
+    st.write(df_map["Main Address"].reset_index(drop=True))
+
+
+with col2:
+    st.markdown("<h3 style='text-align: center; color: red;'>Location 📍</h3>", unsafe_allow_html=True)
+    st.markdown("<a href='https://www.appsheet.com/start/135c691c-2e06-418d-a0df-f206a7e51f3d?platform=desktop#viewStack[0][identifier][Type]=Control&viewStack[0][identifier][Name]=Map&appName=00_Existingdarkstores-4626010-22-09-06'>Link to google maps</a>", unsafe_allow_html=True)
+    df_map.reset_index(inplace=True)
+    if len(df_map) == 1:
+        map = folium.Map(location=[float(df_map["lat"][0]), float(df_map["lon"][0])], zoom_start=16)
+    else:
+        map = folium.Map(location=[float(df_map["lat"][0]), float(df_map["lon"][0])], zoom_start=7)
+
+    #df_map.apply(lambda row:folium.Marker(location=[row["lat"], row["lon"]], popup=row.loc["Property"], tooltip=row.loc["Property"]).add_to(map), axis=1)
+
+    for (index, row) in df_map.iterrows():
+        folium.Marker(location=[row["lat"], row["lon"]], tooltip=row["Property"], popup="example").add_to(map)
+
+    bordersStyle = {
+        'color':'red',
+        'weight': 2,
+        'fillColor':'blue',
+        'fillOpacity': 0.3
+    }
+    # Opening JSON file
+    f = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_04.geojson')
+
+    # returns JSON object as
+    # a dictionary
+    data = json.load(f)
+
+    f2 = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_042.geojson', 'r')
+
+    # returns JSON object as
+    # a dictionary
+    data2 = json.load(f2)
+
+    folium.GeoJson(data, name="Polygons 2").add_to(map)
+    folium.GeoJson(data2, name="Polygons").add_to(map)
+    st_map = st_folium(map, width=1500, height=800)
+    map.save("output.html")
+    print("File created")
+
+
+
+st.json(data)
+#folium.Marker(location=[dfmap["lat"], warehouserow["lon"]],tooltip=row["Property"], popup="example").add_to(map)
+#st_map = st_folium(map, width=1500, height=800)
 
 
