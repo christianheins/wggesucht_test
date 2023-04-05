@@ -532,9 +532,9 @@ def main():
         #Specify a path
         path = nameofdataframe
         # file modification timestamp of a file
-        m_time = os.path.getmtime(path)
+        m_time = os.path.getctime(path)
         # convert timestamp into DateTime object
-        dt_m = dt.datetime.fromtimestamp(m_time).strftime("%m/%d/%Y - %H:%M:%S")
+        dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
         st.write(f'Modified on: {dt_m}')
 
     df_concat = pd.read_csv(nameofdataframe)
