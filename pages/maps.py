@@ -1,4 +1,6 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
+from st_pages import Page, show_pages, add_page_title
 from streamlit_folium import folium_static, st_folium
 import folium
 import pandas as pd
