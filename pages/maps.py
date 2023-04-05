@@ -62,5 +62,10 @@ def add_logo():
     )
 add_logo()
 
+st.sidebar.header("Sections")
+
+st.sidebar.text("Hi!")
+
+st.markdown("<h1 style='text-align: center; color: red;'>Maps 🦮</h1>", unsafe_allow_html=True)
 
 
