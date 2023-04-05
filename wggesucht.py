@@ -8,6 +8,7 @@ def main():
     import altair as alt
     import urllib.parse
     import os
+    import datetime as dt
 
     pd.set_option('display.max_columns', None)
 
@@ -500,8 +501,13 @@ def main():
     with open("df_concat.csv") as f:
         st.write(f)
 
-    time = os.path.getmtime("df_concat.csv")
-    st.write(time)
+    path = r"E:\demos\files_demos\sample.txt"
+
+    # file modification timestamp of a file
+    m_time = os.path.getmtime("df_concat.csv")
+    # convert timestamp into DateTime object
+    dt_m = dt.datetime.fromtimestamp(m_time)
+    print('Modified on:', dt_m)
 
     df_concat = pd.read_csv("df_concat.csv")
 
