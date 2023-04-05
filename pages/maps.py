@@ -82,7 +82,7 @@ with col1:
     subsidiary = st.multiselect("Please choose a Country", options=df_map["Neighbourhood"].unique(), help="Please do not leave empty")
     #df_filteredbysubsidiary = df_sheet_bills_sorted[df_sheet_bills_sorted["Subsidiary (no hierarchy)"] == subsidiary[0]]
     df_filteredbysubsidiary = df_map[df_map["Neighbourhood"].isin(subsidiary)]
-    warehouse = st.multiselect("Please choose a property", options=df_filteredbysubsidiary["Property"].unique(), help="Please do not leave empty")
+    warehouse = st.multiselect("Please choose a property", options=df_filteredbysubsidiary["Name"].unique(), help="Please do not leave empty")
     st.write("Selection:")
     st.write(warehouse)
     if subsidiary == []:
@@ -90,10 +90,10 @@ with col1:
     elif warehouse == []:
         df_map = df_filteredbysubsidiary
     else:
-        df_map = df_map[df_map["Property"].isin(warehouse)]
+        df_map = df_map[df_map["Name"].isin(warehouse)]
 
-    st.metric("Current Pure Rent:", df_map["Current Cold Rent in EUR"].reset_index(drop=True)[0])
-    st.write(df_map["Main Address"].reset_index(drop=True))
+    st.metric("Current Pure Rent:", df_map["Miete"].reset_index(drop=True)[0])
+    st.write(df_map["Neighbourhood"].reset_index(drop=True))
 
 
 with col2:
@@ -117,25 +117,23 @@ with col2:
         'fillOpacity': 0.3
     }
     # Opening JSON file
-    f = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_04.geojson')
+    #f = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_04.geojson')
 
     # returns JSON object as
     # a dictionary
-    data = json.load(f)
+    #data = json.load(f)
 
-    f2 = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_042.geojson', 'r')
+    #f2 = open('/Users/christianheins/Desktop/Pythontools/Reports/ELT_Report/pages/RE BULLSEYES 28_042.geojson', 'r')
 
     # returns JSON object as
     # a dictionary
-    data2 = json.load(f2)
+    #data2 = json.load(f2)
 
-    folium.GeoJson(data, name="Polygons 2").add_to(map)
-    folium.GeoJson(data2, name="Polygons").add_to(map)
+    #folium.GeoJson(data, name="Polygons 2").add_to(map)
+    #folium.GeoJson(data2, name="Polygons").add_to(map)
     st_map = st_folium(map, width=1500, height=800)
     map.save("output.html")
     print("File created")
-
-
 
 st.json(data)
 #folium.Marker(location=[dfmap["lat"], warehouserow["lon"]],tooltip=row["Property"], popup="example").add_to(map)
