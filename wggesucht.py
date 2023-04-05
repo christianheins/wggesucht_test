@@ -498,16 +498,16 @@ def main():
             else:
                 st.write("Ready to refresh again!")
 
-    with open("df_concat.csv") as f:
-        st.write(f)
+        with open("df_concat.csv") as f:
+            st.write(f)
 
-    path = r"E:\demos\files_demos\sample.txt"
+        path = r"E:\demos\files_demos\sample.txt"
 
-    # file modification timestamp of a file
-    m_time = os.path.getmtime("df_concat.csv")
-    # convert timestamp into DateTime object
-    dt_m = dt.datetime.fromtimestamp(m_time)
-    st.write(f'Modified on: {dt_m}')
+        # file modification timestamp of a file
+        m_time = os.path.getmtime("df_concat.csv")
+        # convert timestamp into DateTime object
+        dt_m = dt.datetime.fromtimestamp(m_time).strftime("%m/%d/%Y, %H:%M:%S")
+        st.write(f'Modified on: {dt_m}')
 
     df_concat = pd.read_csv("df_concat.csv")
 
