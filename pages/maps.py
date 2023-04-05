@@ -108,7 +108,7 @@ with col2:
     #df_map.apply(lambda row:folium.Marker(location=[row["lat"], row["lon"]], popup=row.loc["Property"], tooltip=row.loc["Property"]).add_to(map), axis=1)
 
     for (index, row) in df_map.iterrows():
-        folium.Marker(location=[row["lat"], row["lon"]], tooltip=row["Property"], popup="example").add_to(map)
+        folium.Marker(location=[row["lat"], row["lon"]], tooltip=row["Name"], popup="example").add_to(map)
 
     bordersStyle = {
         'color':'red',
