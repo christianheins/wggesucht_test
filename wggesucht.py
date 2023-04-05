@@ -499,7 +499,7 @@ def main():
                 st.write("Ready to refresh again!")
 
         with open("df_concat.csv") as f:
-            st.write(f)
+            st.write(f.)
 
         path = r"df_concat.csv"
 
