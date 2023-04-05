@@ -9,6 +9,7 @@ def main():
     import urllib.parse
     import os
     import datetime as dt
+    import base64
 
     pd.set_option('display.max_columns', None)
 
@@ -502,6 +503,42 @@ def main():
                 st.write("No output file, continuing.")
 
             df_concat.to_csv(f"{nameofdataframe}")
+
+            def upload_csv_to_github(filename, content, branch, access_token, repo_owner, repo_name):
+                # Create a new file in the repository
+                url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{filename}"
+                headers = {
+                    "Authorization": f"token {access_token}",
+                    "Accept": "application/vnd.github+json"
+                }
+                data = {
+                    "message": f"Add {filename}",
+                    "content": base64.b64encode(content.encode()).decode(),
+                    "branch": branch
+                }
+                response = requests.put(url, headers=headers, json=data)
+
+                # Check if file was created successfully
+                if response.status_code == 201:
+                    print(f"File {filename} uploaded to GitHub!")
+                else:
+                    print(f"Error uploading file {filename} to GitHub: {response.content}")
+
+            # Define your GitHub credentials and repository information
+            access_token = "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"
+            repo_owner = "christianheins"
+            repo_name = "wggesucht"
+            branch = "main"
+
+            # Create a file input widget to select a CSV file
+            csv_file = df_concat.to_csv(f"{nameofdataframe}")
+
+            # If file is uploaded, read its contents and upload to GitHub
+            if csv_file is not None:
+                df = pd.read_csv(csv_file)
+                csv_content = df.to_csv(index=False)
+                upload_csv_to_github(csv_file.name, csv_content, branch, access_token, repo_owner, repo_name)
+
             st.write(f"Dataframe with name {nameofdataframe} created.")
             button_pressed = False
 
