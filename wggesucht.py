@@ -48,7 +48,7 @@ def main():
         #Create a button
         button_pressed = False
         st.markdown("""---""")
-        st.markdown("<p style='text-align: center; color: red;'>Click to refresh the WGGesucht dataframe</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: red;'>Click to refresh the WG-Gesucht dataframe</p>", unsafe_allow_html=True)
         if st.button("Refresh", use_container_width=True):
             button_pressed = True
             st.write("Button pressed!")
