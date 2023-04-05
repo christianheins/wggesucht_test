@@ -507,7 +507,7 @@ def main():
     m_time = os.path.getmtime("df_concat.csv")
     # convert timestamp into DateTime object
     dt_m = dt.datetime.fromtimestamp(m_time)
-    print('Modified on:', dt_m)
+    st.write(f'Modified on: {dt_m}')
 
     df_concat = pd.read_csv("df_concat.csv")
 
