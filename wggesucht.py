@@ -393,7 +393,7 @@ def main():
 
                 if str(neighbourhood).__contains__("Alt- Treptower"):
                     print("Alt- Treptower")
-                    neighbourhoods_clean.append("Blankenburg")
+                    neighbourhoods_clean.append("Alt- Treptower")
 
                 elif str(neighbourhood).__contains__("Blankenburg"):
                     print("Blankenburg")
@@ -423,6 +423,14 @@ def main():
                     print("Mitte")
                     neighbourhoods_clean.append("Marienfelde")
 
+                elif str(neighbourhood).__contains__("Mariendorf"):
+                    print("Mariendorf")
+                    neighbourhoods_clean.append("Mariendorf")
+
+                elif str(neighbourhood).__contains__("Marzahn"):
+                    print("Marzahn")
+                    neighbourhoods_clean.append("Marzahn")
+
                 elif str(neighbourhood).__contains__("Mitte"):
                     print("Mitte")
                     neighbourhoods_clean.append("Mitte")
@@ -435,9 +443,29 @@ def main():
                     print("Neukölln")
                     neighbourhoods_clean.append("Neukölln")
 
+                elif str(neighbourhood).__contains__("Oberschöneweide"):
+                    print("Oberschöneweide")
+                    neighbourhoods_clean.append("Oberschöneweide")
+
+                elif str(neighbourhood).__contains__("Pankow"):
+                    print("Pankow")
+                    neighbourhoods_clean.append("Pankow")
+
                 elif str(neighbourhood).__contains__("Prenzlauer Berg"):
                     print("Prenzlauer Berg")
                     neighbourhoods_clean.append("Prenzlauer Berg")
+
+                elif str(neighbourhood).__contains__("Reinickendorf"):
+                    print("Reinickendorf")
+                    neighbourhoods_clean.append("Reinickendorf")
+
+                elif str(neighbourhood).__contains__("Schöneberg"):
+                    print("Schöneberg")
+                    neighbourhoods_clean.append("Schöneberg")
+
+                 elif str(neighbourhood).__contains__("Spandau"):
+                    print("Spandau")
+                    neighbourhoods_clean.append("Spandau")
 
                 elif str(neighbourhood).__contains__("Tempelhof"):
                     print("Tempelhof")
