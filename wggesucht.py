@@ -437,6 +437,7 @@ def main():
 
             #df_concat = pd.concat([df1, df2, df3, df4, df5])
             df_concat = requestswg_all()
+            df_concat.dropna(subset=["Eintrag"], inplace=True)
             df_concat.reset_index(drop=True, inplace=True)
 
             #Give eachrow a name
