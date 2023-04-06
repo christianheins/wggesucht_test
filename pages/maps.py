@@ -66,7 +66,7 @@ st.sidebar.header("Sections")
 
 st.sidebar.text("Hi!")
 
-st.markdown("<h3 style='text-align: center; color: orange;'>Maps 🦮</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: orange;'>Mapssss 🦮</h3>", unsafe_allow_html=True)
 
 nameofdataframe = r"df_concat.csv"
 filename_csv_table_realestate_from_reporting = nameofdataframe
