@@ -746,7 +746,8 @@ def main():
         st.markdown("<h3 style='text-align: center; color: orange;'>Map</h6>", unsafe_allow_html=True)
 
         df_concat.rename(columns = {"Latitude":"lat","Longitude":"lon"}, inplace=True)
-
+        df_concat['lat'] = pd.to_numeric(df_concat['lat'])
+        df_concat['lon'] = pd.to_numeric(df_concat['lon'])
         st.write(df_concat)
         st.map(df_concat)
 
