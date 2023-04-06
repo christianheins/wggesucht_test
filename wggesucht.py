@@ -625,7 +625,8 @@ def main():
 
     df_concat = pd.read_csv(nameofdataframe)
     #df_concat.drop(df_concat[df_concat["Latitude"].str() != "Location not found: NA"], inplace=True)
-    #df_concat = df_concat[~df_concat["Latitude"].isin("Location not found: NA")]
+    latitudes = ["Location not found: Wedding","Location not found: Reinickendorf","Location not found: Prenzlauer Berg","Location not found: Neukölln","Location not found: NA","Location not found: Moabit","Location not found: Mitte","Location not found: Marienfelde","Location not found: Lichtenberg","Location not found: Kreuzberg","Location not found: Charlottenburg"]
+    df_concat = df_concat[~df_concat["Latitude"].isin(latitudes)]
 
     def add_logo():
         st.markdown(
