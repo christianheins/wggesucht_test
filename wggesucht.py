@@ -524,7 +524,7 @@ def main():
 
             df_concat.to_csv(f"{nameofdataframe}")
 
-            access_token = "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"
+            access_token = st.secrets.token
             repo_name = "wggesucht"
             g = Github(access_token)
             repo = g.get_user().get_repo(repo_name)
@@ -631,6 +631,7 @@ def main():
 
         col1, col2 = st.columns([0.6, 0.4])
         with col1:
+
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
             st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
 
