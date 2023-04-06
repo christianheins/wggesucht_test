@@ -117,9 +117,9 @@ def main():
                     df["EUR / SQM"] = df["Miete"] / df["Größe"]
                     #print(df)
                     dfs.append(df)
-                for df in dfs:
+                for df_toupdate in dfs:
                     df = pd.DataFrame()
-                    pd.concat([df])
+                    pd.concat(df_toupdate)
                 df.reset_index(drop=True, inplace=True)
                 print(df)
                 return df
