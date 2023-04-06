@@ -40,7 +40,7 @@ def main():
     with st.sidebar:
         st.sidebar.header("Sections")
         selected = option_menu(
-            menu_title="Finance Menu",
+            menu_title="Menu",
             options=["🏘️ Apartments", "🫂 Neighbourhoods"], #https://icons.getbootstrap.com/
             orientation="vertical",
         )
@@ -53,6 +53,76 @@ def main():
             button_pressed = True
             st.write("Button pressed!")
 
+            def requestswg_all():
+
+                '''
+                url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
+
+                # Add headers to mimic a browser request
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+                }
+
+                response = requests.get(url, headers=headers)
+
+                # check the status code of the response
+                print(response.status_code)
+
+                # access the content of the response
+                html_content = response.content
+                print(html_content)
+                '''
+
+                dfs = []
+                for i in range(0,4):
+
+                    #url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
+                    url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?offer_filter=1&city_id=8&sort_order=0&noDeact=1&categories%5B%5D=1&categories%5B%5D=2&rent_types%5B%5D=0#back_to_ad_9597345"
+                    headers = {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+                    }
+                    response = requests.get(url, headers=headers)
+                    print(response)
+
+                    dfs = pd.read_html(response.content)
+                    df = dfs[0]  # assuming the desired table is the first one on the page
+                    #for df in dfs:
+                    #    print(df)
+
+                    # Format the dataframe
+                    df['frei bis'] = pd.to_datetime(df['frei bis'], dayfirst=True)
+                    df['frei ab'] = pd.to_datetime(df['frei ab'], dayfirst=True)
+                    df["Größe"] = df['Größe'].str.replace("m²","")
+                    df["Miete"] = df['Miete'].str.replace(" €","")
+                    df["Miete"] = df['Miete'].str.replace("€","")
+                    df[["Miete", "Größe"]] = df[["Miete", "Größe"]].astype(float)
+                    df["Lease term"] = df["frei bis"] - df["frei ab"]
+                    #print(df.columns)
+                    #print(df["Lease term"])
+
+                    # Create two date objects
+                    date1 = pd.to_datetime('2022-03-20')
+                    date2 = pd.to_datetime('2022-03-25')
+
+                    # Calculate the difference between the two dates
+                    diff = date2 - date1
+
+                    # Print the difference in days
+
+                    #print(diff.days)
+
+
+                    df['Lease term'] = (df['frei bis'].dt.year - df['frei ab'].dt.year) * 12 + (df['frei bis'].dt.month - df['frei ab'].dt.month)
+
+                    df["EUR / SQM"] = df["Miete"] / df["Größe"]
+                    #print(df)
+                    dfs.append(df)
+                for df in dfs:
+                    df = pd.DataFrame()
+                    pd.concat([df])
+                df.reset_index(drop=True, inplace=True)
+                print(df)
+                return df
             def requestswg():
 
                 '''
@@ -363,14 +433,15 @@ def main():
                 #print(df)
                 return df
 
-            df1 = requestswg()
-            df2 = requestswg2()
-            df3 = requestswg3()
-            df4 = requestswg4()
-            df5 = requestswg5()
+            #df1 = requestswg()
+            #df2 = requestswg2()
+            #df3 = requestswg3()
+            #df4 = requestswg4()
+            #df5 = requestswg5()
 
-            df_concat = pd.concat([df1, df2, df3, df4, df5])
-            df_concat.reset_index(drop=True, inplace=True)
+            #df_concat = pd.concat([df1, df2, df3, df4, df5])
+            #df_concat.reset_index(drop=True, inplace=True)
+            df_concat = requestswg_all()
 
             #Give eachrow a name
             def combine_names(row):
