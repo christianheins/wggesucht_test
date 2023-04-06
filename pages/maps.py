@@ -71,10 +71,10 @@ st.markdown("<h3 style='text-align: center; color: orange;'>Mapssss 🦮</h3>", 
 nameofdataframe = r"df_concat.csv"
 filename_csv_table_realestate_from_reporting = nameofdataframe
 df_map = pd.read_csv(filename_csv_table_realestate_from_reporting)
+st.write(df_map)
 df_map.fillna(0, inplace=True)
 df_map["Latitude"] = df_map["Latitude"].astype(float)
 df_map["Longitude"] = df_map["Longitude"].astype(float)
-st.write(df_map)
 latitudes = ["Location not found: Wedding","Location not found: Reinickendorf","Location not found: Prenzlauer Berg","Location not found: Neukölln","Location not found: NA","Location not found: Moabit","Location not found: Mitte","Location not found: Marienfelde","Location not found: Lichtenberg","Location not found: Kreuzberg","Location not found: Charlottenburg"]
 df_map = df_map[~df_map["Latitude"].isin(latitudes)]
 #df_map = df_map[["Latitude","Longitude","Country","Property Status", "Property"]]
