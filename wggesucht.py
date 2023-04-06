@@ -54,7 +54,6 @@ def main():
             st.write("Button pressed!")
 
             def requestswg_all():
-
                 '''
                 url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
 
