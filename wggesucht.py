@@ -742,12 +742,12 @@ def main():
         st.markdown("""---""")
         st.markdown("<h3 style='text-align: center; color: orange;'>Map</h6>", unsafe_allow_html=True)
 
+        #df_concat.drop(df_concat[df_concat["Latitude"].str() != "Location not found: NA"], inplace=True)
+        latitudes = ["Location not found: Wedding","Location not found: Reinickendorf","Location not found: Prenzlauer Berg","Location not found: Neukölln","Location not found: NA","Location not found: Moabit","Location not found: Mitte","Location not found: Marienfelde","Location not found: Lichtenberg","Location not found: Kreuzberg","Location not found: Charlottenburg"]
+        df_concat = df_concat[~df_concat["Latitude"].isin(latitudes)]
         df_concat.rename(columns = {"Latitude":"lat","Longitude":"lon"}, inplace=True)
         df_concat['lat'] = pd.to_numeric(df_concat['lat'])
         df_concat['lon'] = pd.to_numeric(df_concat['lon'])
-        #df_concat.drop(df_concat[df_concat["Latitude"].str() != "Location not found: NA"], inplace=True)
-        latitudes = ["Location not found: Wedding","Location not found: Reinickendorf","Location not found: Prenzlauer Berg","Location not found: Neukölln","Location not found: NA","Location not found: Moabit","Location not found: Mitte","Location not found: Marienfelde","Location not found: Lichtenberg","Location not found: Kreuzberg","Location not found: Charlottenburg"]
-        df_concat = df_concat[~df_concat["lat"].isin(latitudes)]
         st.write(df_concat)
         st.map(df_concat)
 
