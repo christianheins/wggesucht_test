@@ -73,7 +73,7 @@ def main():
                 print(html_content)
                 '''
 
-                dfs = []
+                df_toupdate = []
                 for i in range(0,4):
 
                     #url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
@@ -116,13 +116,9 @@ def main():
 
                     df["EUR / SQM"] = df["Miete"] / df["Größe"]
                     #print(df)
-                    dfs.append(df)
+                    df_toupdate.append(df)
 
-                df = pd.DataFrame()
-                for df_toupdate in dfs:
-                    df = pd.concat(df_toupdate)
-                df.reset_index(drop=True, inplace=True)
-                print(df)
+                df = pd.concat(df_toupdate)
                 return df
             def requestswg():
 
