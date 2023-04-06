@@ -747,6 +747,7 @@ def main():
 
         df_concat.rename(columns = {"Latitude":"lat","Longitude":"lon"}, inplace=True)
 
+        st.write(df_concat)
         st.map(df_concat)
 
         with st.container():
