@@ -624,7 +624,7 @@ def main():
         st.write(f'File last created on: {dt_m}')
 
     df_concat = pd.read_csv(nameofdataframe)
-    df_concat = df_concat.drop(df_concat[df_concat["Latitude"] != "Location not found: NA"])
+    #df_concat = df_concat.drop(df_concat[df_concat["Latitude"] != "Location not found: NA"])
 
     def add_logo():
         st.markdown(
