@@ -702,7 +702,7 @@ def main():
 
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
 
-            df_concat_pivot_longterm_shortterm = df_concat["Lease term"].isna().sum()
+            df_concat_pivot_longterm_shortterm = df_concat["Lease term"].value_counts()
             st.write(df_concat_pivot_longterm_shortterm)
 
             st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
