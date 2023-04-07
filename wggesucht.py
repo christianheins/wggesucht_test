@@ -699,11 +699,11 @@ def main():
 
         col1, col2 = st.columns([0.6, 0.4])
         with col1:
-            df_concat_pivot_longterm_shortterm = df_concat["Lease term"].isna().sum()
-            df_concat_pivot_longterm_longterm = df_concat[df_concat["Lease term"] > 0]
-            st.write(df_concat_pivot_longterm_longterm)
-            source = pd.DataFrame({"Category": ["Long term", "Short term"], "Value": [df_concat_pivot_longterm_shortterm, 6]})
-            st.write(f"The number of long term deals is: {df_concat_pivot_longterm_shortterm}")
+            df_concat_pivot_longterm = df_concat["Lease term"].isna().sum()
+            df_concat_pivot_shortterm = len(df_concat[df_concat["Lease term"] > 0])
+            st.write(df_concat_pivot_longterm)
+            source = pd.DataFrame({"Category": ["Indefinite term", "Limited term"], "Value": [df_concat_pivot_longterm, df_concat_pivot_shortterm]})
+            st.write(f"The number of long term deals is: {df_concat_pivot_longterm}")
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
             chart = alt.Chart(source).mark_arc().encode(
                 theta='Value:Q',
