@@ -705,8 +705,8 @@ def main():
             st.write(f"The number of long term deals is: {df_concat_pivot_longterm_shortterm}")
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
             chart = alt.Chart(source).mark_arc().encode(
-                theta='Value',
-                color='Category',
+                theta='Value:Q',
+                color='Category:N',
                 tooltip=['Lease term']
             )
 
