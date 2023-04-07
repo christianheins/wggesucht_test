@@ -701,7 +701,12 @@ def main():
         with col1:
 
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
-
+            chart = alt.Chart(df_concat).mark_arc().encode(
+                theta='Lease term',
+                color='Neighbourhood',
+                tooltip=['Lease term']
+            )
+            st.altair_chart(chart.interactive(), use_container_width=True)
             df_concat_pivot_longterm_shortterm = df_concat["Lease term"].isna().sum()
             st.write(df_concat_pivot_longterm_shortterm)
             st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
