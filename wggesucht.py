@@ -707,7 +707,7 @@ def main():
             chart = alt.Chart(source).mark_arc().encode(
                 theta='Value:Q',
                 color='Category:N',
-                tooltip=['Lease term']
+                tooltip=['Lease term:Q']
             )
 
             st.altair_chart(chart.interactive(), use_container_width=True)
