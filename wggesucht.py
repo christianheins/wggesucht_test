@@ -713,7 +713,7 @@ def main():
             )
             chart = alt.Chart(source).mark_arc(innerRadius=50).encode(
                 theta='Value:Q',
-                color='Category:N',
+                color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
                 tooltip=['Value:Q']
             )
 
