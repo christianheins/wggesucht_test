@@ -702,7 +702,7 @@ def main():
             df_concat_pivot_longterm = df_concat["Lease term"].isna().sum()
             df_concat_pivot_shortterm = len(df_concat[df_concat["Lease term"] > 0])
             source = pd.DataFrame({"Category": ["Indefinite term", "Limited term"], "Value": [df_concat_pivot_longterm, df_concat_pivot_shortterm]})
-            st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Lease terms</h6>", unsafe_allow_html=True)
             chart = alt.Chart(source).mark_arc().encode(
                 theta='Value:Q',
                 color='Category:N',
@@ -715,6 +715,7 @@ def main():
             )
 
             st.altair_chart(chart.interactive(), use_container_width=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
             st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
 
         with col2:
