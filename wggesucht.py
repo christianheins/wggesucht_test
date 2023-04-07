@@ -711,6 +711,11 @@ def main():
                 color='Category:N',
                 tooltip=['Value:Q']
             )
+            chart = alt.Chart(source).mark_arc(innerRadius=50).encode(
+                theta='Value:Q',
+                color='Category:N',
+                tooltip=['Value:Q']
+            )
 
             st.altair_chart(chart.interactive(), use_container_width=True)
             st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
