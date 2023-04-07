@@ -701,7 +701,7 @@ def main():
         with col1:
             df_concat_pivot_longterm_shortterm = df_concat["Lease term"].isna().sum()
 
-            source = pd.DataFrame({"Category": ["Long term", "Short term"], "Value": [4, 6]})
+            source = pd.DataFrame({"Category": ["Long term", "Short term"], "Value": [df_concat_pivot_longterm_shortterm, 6]})
             st.write(f"The number of long term deals is: {df_concat_pivot_longterm_shortterm}")
             st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
             chart = alt.Chart(source).mark_arc().encode(
