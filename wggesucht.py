@@ -708,7 +708,6 @@ def main():
                 theta='Value:Q',
                 color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
                 tooltip=['Value:Q'],
-                legend=alt.Legend(orient='left')
             )
             chart = chart.configure_legend(
                 orient='left'
