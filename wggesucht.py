@@ -708,6 +708,7 @@ def main():
                 theta='Value:Q',
                 color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
                 tooltip=['Value:Q'],
+                legend=alt.Legend(orient='left')
             )
 
             st.altair_chart(chart.interactive(), use_container_width=True)
