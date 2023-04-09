@@ -703,16 +703,11 @@ def main():
             df_concat_pivot_shortterm = len(df_concat[df_concat["Lease term"] > 0])
             source = pd.DataFrame({"Category": ["Indefinite term", "Limited term"], "Value": [df_concat_pivot_longterm, df_concat_pivot_shortterm]})
             st.markdown("<h6 style='text-align: center; color: orange;'>Lease terms</h6>", unsafe_allow_html=True)
-            chart = alt.Chart(source).mark_arc().encode(
-                theta='Value:Q',
-                color='Category:N',
-                tooltip=['Value:Q']
-            )
+
             chart = alt.Chart(source).mark_arc(innerRadius=90).encode(
                 theta='Value:Q',
                 color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
                 tooltip=['Value:Q'],
-                legend=alt.Legend(orient='left')
             )
 
             st.altair_chart(chart.interactive(), use_container_width=True)
