@@ -824,7 +824,7 @@ def main():
             st.write(df_concat_pivot_releasedate)
 
 
-            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%m/%d')
+            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%M/%D')
 
             st.write(df_concat_pivot_releasedate)
 
