@@ -851,6 +851,15 @@ def main():
 
         with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Neighbourghoods</h6>", unsafe_allow_html=True)
+            chart = alt.Chart(source).mark_arc(innerRadius=90).encode(
+                theta='Value:Q',
+                color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
+                tooltip=['Value:Q'],
+            )
+            chart = chart.configure_legend(
+                orient='left'
+            )
+            st.altair_chart(chart.interactive(), use_container_width=True)
             chart = alt.Chart(df_concat_neighbourhoods).encode(
                 x=alt.X('Eintrag:Q'),
                 y=alt.Y('Neighbourhood:N', sort=None), #use 'sort=None' to preserve the order of categories
