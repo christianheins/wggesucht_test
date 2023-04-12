@@ -821,7 +821,7 @@ def main():
         df_concat_endofleaseterm = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'Lease term']].pivot_table(index="Lease term", values="Eintrag", aggfunc="count").reset_index()
         df_concat_endofleaseterm.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
 
-        col1, col2 = st.columns([0.6, 0.4])
+        col1, col2, col3= st.columns([0.3, 0.3, 0.3])
         with col1:
             df_concat_pivot_longterm = df_concat["Lease term"].isna().sum()
             df_concat_pivot_shortterm = len(df_concat[df_concat["Lease term"] > 0])
@@ -883,6 +883,9 @@ def main():
             wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
 
             st.altair_chart(wholechart.interactive(), use_container_width=True)
+
+        with col3:
+            st.write("Hi")
 
         st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
         st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
