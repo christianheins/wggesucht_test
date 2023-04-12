@@ -73,7 +73,7 @@ def main():
                 '''
 
                 df_toupdate = []
-                for i in range(0,20):
+                for i in range(0,50):
 
                     #url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
                     url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?pagination=1&pu="
@@ -695,7 +695,6 @@ def main():
 
         df_concat_endofleaseterm = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'Lease term']].pivot_table(index="Lease term", values="Eintrag", aggfunc="count").reset_index()
         df_concat_endofleaseterm.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
-
 
         col1, col2 = st.columns([0.6, 0.4])
         with col1:
