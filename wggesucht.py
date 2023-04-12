@@ -56,7 +56,7 @@ def main():
             def requestswg_all():
 
                     df_toupdate = []
-                    for i in range(0,10):
+                    for i in range(0,20):
 
                         url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?pagination=1&pu="
                         headers = {
