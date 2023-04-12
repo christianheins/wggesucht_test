@@ -724,6 +724,10 @@ def main():
 
     df_concat = pd.read_csv(nameofdataframe)
 
+    #Filtering a bit more the dataframe
+    dataframe_filter = df_concat["Größe"] > 9
+    df_concat = df_concat[dataframe_filter]
+
     def add_logo():
         st.markdown(
             """
