@@ -867,7 +867,7 @@ def main():
             chart = alt.Chart(df_concat_neighbourhoods).encode(
                 x=alt.X('Eintrag:Q'),
                 y=alt.Y('Neighbourhood:N', sort=None), #use 'sort=None' to preserve the order of categories
-                text=alt.Text('Eintrag', format='.1f')
+                text=alt.Text('Eintrag', format='.1f'), text=alt.Text('Neighbourhood', format='.1f')
             )
             #Combine bar chart with text chart, weird isnt?
 
