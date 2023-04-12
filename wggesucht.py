@@ -821,7 +821,7 @@ def main():
                 st.metric("75% of the leases are up to", value="{:,.0f} months".format(df_statistics.loc["75%"]["Lease term"]))
                 st.metric("Longest lease term", value="{:,.0f} months".format(df_concat["Lease term"].max()))
 
-            st.markdown("<h6 style='text-align: center; color: orange;'>Numerical values described</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: left; color: orange;'>Numerical values described</h6>", unsafe_allow_html=True)
             st.write(df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe())
 
         st.markdown("""---""")
@@ -923,22 +923,6 @@ def main():
 
         st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
         st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
-
-        col1, col2 = st.columns([0.5, 0.5])
-        with col1:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term exact count</h6>", unsafe_allow_html=True)
-            st.write(df_concat_endofleaseterm)
-        with col2:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Chart</h6>", unsafe_allow_html=True)
-            chart = alt.Chart(df_concat_endofleaseterm).encode(
-                x=alt.X('Lease term:Q'),
-                y=alt.Y('Eintrag:Q', sort=None), #use 'sort=None' to preserve the order of categories
-                text=alt.Text('Eintrag', format='.1f')
-            )
-            #Combine bar chart with text chart, weird isnt?
-            wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='center', dy=-5, color="black"))
-
-            st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         st.markdown("""---""")
         st.markdown("<h3 style='text-align: center; color: orange;'>Map of neighbourhoods</h6>", unsafe_allow_html=True)
