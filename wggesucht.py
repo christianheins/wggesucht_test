@@ -54,72 +54,53 @@ def main():
             st.write("Button pressed!")
 
             def requestswg_all():
-                '''
-                url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
 
-                # Add headers to mimic a browser request
-                headers = {
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-                }
+                    df_toupdate = []
+                    for i in range(0,10):
 
-                response = requests.get(url, headers=headers)
+                        url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?pagination=1&pu="
+                        headers = {
+                            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+                        }
+                        response = requests.get(url, headers=headers)
+                        print(response)
 
-                # check the status code of the response
-                print(response.status_code)
+                        dfs = pd.read_html(response.content)
+                        df = dfs[0]  # assuming the desired table is the first one on the page
+                        #for df in dfs:
+                        #    print(df)
 
-                # access the content of the response
-                html_content = response.content
-                print(html_content)
-                '''
+                        # Format the dataframe
+                        df['frei bis'] = pd.to_datetime(df['frei bis'], dayfirst=True)
+                        df['frei ab'] = pd.to_datetime(df['frei ab'], dayfirst=True)
+                        df["Größe"] = df['Größe'].str.replace("m²","")
+                        df["Miete"] = df['Miete'].str.replace(" €","")
+                        df["Miete"] = df['Miete'].str.replace("€","")
+                        df[["Miete", "Größe"]] = df[["Miete", "Größe"]].astype(float)
+                        df["Lease term"] = df["frei bis"] - df["frei ab"]
+                        #print(df.columns)
+                        #print(df["Lease term"])
 
-                df_toupdate = []
-                for i in range(0,10):
+                        # Create two date objects
+                        date1 = pd.to_datetime('2022-03-20')
+                        date2 = pd.to_datetime('2022-03-25')
 
-                    #url = "https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html"
-                    #url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?pagination=1&pu="
-                    url = f"https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.{i}.html?pagination=1&pu="
-                    headers = {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
-                    }
-                    response = requests.get(url, headers=headers)
-                    print(response)
+                        # Calculate the difference between the two dates
+                        diff = date2 - date1
 
-                    dfs = pd.read_html(response.content)
-                    df = dfs[0]  # assuming the desired table is the first one on the page
-                    #for df in dfs:
-                    #    print(df)
+                        # Print the difference in days
 
-                    # Format the dataframe
-                    df['frei bis'] = pd.to_datetime(df['frei bis'], dayfirst=True)
-                    df['frei ab'] = pd.to_datetime(df['frei ab'], dayfirst=True)
-                    df["Größe"] = df['Größe'].str.replace("m²","")
-                    df["Miete"] = df['Miete'].str.replace(" €","")
-                    df["Miete"] = df['Miete'].str.replace("€","")
-                    df[["Miete", "Größe"]] = df[["Miete", "Größe"]].astype(float)
-                    df["Lease term"] = df["frei bis"] - df["frei ab"]
-                    #print(df.columns)
-                    #print(df["Lease term"])
-
-                    # Create two date objects
-                    date1 = pd.to_datetime('2022-03-20')
-                    date2 = pd.to_datetime('2022-03-25')
-
-                    # Calculate the difference between the two dates
-                    diff = date2 - date1
-
-                    # Print the difference in days
-
-                    #print(diff.days)
+                        #print(diff.days)
 
 
-                    df['Lease term'] = (df['frei bis'].dt.year - df['frei ab'].dt.year) * 12 + (df['frei bis'].dt.month - df['frei ab'].dt.month)
+                        df['Lease term'] = (df['frei bis'].dt.year - df['frei ab'].dt.year) * 12 + (df['frei bis'].dt.month - df['frei ab'].dt.month)
 
-                    df["EUR / SQM"] = df["Miete"] / df["Größe"]
-                    #print(df)
-                    df_toupdate.append(df)
+                        df["EUR / SQM"] = df["Miete"] / df["Größe"]
+                        #print(df)
+                        df_toupdate.append(df)
 
-                df = pd.concat(df_toupdate)
-                return df
+                    df = pd.concat(df_toupdate)
+                    return df
 
             def requestswg():
 
