@@ -725,8 +725,9 @@ def main():
     df_concat = pd.read_csv(nameofdataframe)
 
     #Filtering a bit more the dataframe
-    dataframe_filter = df_concat["Größe"] > 9
-    df_concat = df_concat[dataframe_filter]
+    dataframe_filter1 = df_concat["Größe"] > 9
+    dataframe_filter2 = df_concat["Miete"] > 9
+    df_concat = df_concat[dataframe_filter1 | ]
 
     def add_logo():
         st.markdown(
@@ -774,24 +775,27 @@ def main():
             st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>Please use as a guide for only the WG Gesucht portal, this data is not completly representative.</li>", unsafe_allow_html=True)
         st.markdown("""---""")
 
+        df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
+
         col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
         with col1:
-            st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
+            #st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
             st.metric("Average rent", value="{:,.0f} €".format(df_concat["Miete"].mean()))
             st.metric("Standard deviation rent", value="{:,.0f} €".format(df_concat["Miete"].std()))
+            st.metric("75%", value="{:,.0f} €".format(df_statistics.loc["75%"]))
             st.metric("Max rent", value="{:,.0f} €".format(df_concat["Miete"].max()))
         with col2:
-            st.metric("Min size", value="{:,.0f} SQM".format(df_concat["Größe"].min()))
+            #st.metric("Min size", value="{:,.0f} SQM".format(df_concat["Größe"].min()))
             st.metric("Average size", value="{:,.0f} SQM".format(df_concat["Größe"].mean()))
             st.metric("Standard deviation size", value="{:,.0f} SQM".format(df_concat["Größe"].std()))
             st.metric("Max size", value="{:,.0f} SQM".format(df_concat["Größe"].max()))
         with col3:
-            st.metric("Min EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].min()))
+            #st.metric("Min EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].min()))
             st.metric("Average EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].mean()))
             st.metric("Standard deviation EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].std()))
             st.metric("Max EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].max()))
         with col4:
-            st.metric("Min lease term", value="{:,.0f} months".format(df_concat["Lease term"].min()))
+            #st.metric("Min lease term", value="{:,.0f} months".format(df_concat["Lease term"].min()))
             st.metric("Average lease term", value="{:,.0f} months".format(df_concat["Lease term"].mean()))
             st.metric("Standard deviation lease term", value="{:,.0f} months".format(df_concat["Lease term"].std()))
             st.metric("Longest lease term", value="{:,.0f} months".format(df_concat["Lease term"].max()))
