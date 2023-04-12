@@ -857,7 +857,7 @@ def main():
             chart = alt.Chart(df_concat_neighbourhoods_filtered).mark_arc(innerRadius=90).encode(
                 theta='Eintrag:Q',
                 color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
-                tooltip=['Neighbourhood'],
+                tooltip=['Neighbourhood:N'],
             )
 
             chart2 = alt.Chart(df_concat_neighbourhoods_filtered).mark_arc(innerRadius=90).encode(
@@ -865,8 +865,6 @@ def main():
                 color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
                 tooltip=['Eintrag:Q'],
             )
-
-
 
             wholechart = alt.layer(chart, chart2)
             st.altair_chart(wholechart.interactive(), use_container_width=True)
