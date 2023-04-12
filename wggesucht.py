@@ -812,7 +812,7 @@ def main():
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
 
-            df_concat_pivot_releasedate = df_concat["Eintrag"].pivot_table(index="Eintrag", values="Eintrag", aggfunc="count").reset_index()
+            df_concat_pivot_releasedate = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Eintrag", values="Eintrag", aggfunc="count").reset_index()
             st.write(df_concat_pivot_releasedate)
 
         with col2:
