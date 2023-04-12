@@ -857,7 +857,7 @@ def main():
             chart = alt.Chart(df_concat_neighbourhoods_filtered).mark_arc(innerRadius=90).encode(
                 theta='Eintrag:Q',
                 color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
-                tooltip=['Eintrag:Q'],
+                tooltip=['Neighbourhood'],
             )
             chart = chart.configure_legend(
                 orient='left'
@@ -867,7 +867,7 @@ def main():
             chart = alt.Chart(df_concat_neighbourhoods).encode(
                 x=alt.X('Eintrag:Q'),
                 y=alt.Y('Neighbourhood:N', sort=None), #use 'sort=None' to preserve the order of categories
-                text=alt.Text('Eintrag', format='.1f'), text=alt.Text('Neighbourhood', format='.1f')
+                text=alt.Text('Eintrag:Q', format='.1f'),
             )
             #Combine bar chart with text chart, weird isnt?
 
