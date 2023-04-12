@@ -851,7 +851,10 @@ def main():
 
         with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods</h6>", unsafe_allow_html=True)
-            chart = alt.Chart(df_concat_neighbourhoods).mark_arc(innerRadius=90).encode(
+
+            df_concat_neighbourhoods_filtered = df_concat_neighbourhoods.iloc[:10]
+
+            chart = alt.Chart(df_concat_neighbourhoods_filtered).mark_arc(innerRadius=90).encode(
                 theta='Eintrag:Q',
                 color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
                 tooltip=['Eintrag:Q'],
