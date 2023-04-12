@@ -1,4 +1,5 @@
 html5lib
+BeautifulSoup4
 altair
 streamlit
 pandas
