@@ -812,6 +812,9 @@ def main():
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
 
+            df_concat_pivot_releasedate = df_concat["Eintrag"].pivot_table(index="Eintrag", values="Eintrag", aggfunc="count").reset_index()
+            st.write(df_concat_pivot_releasedate)
+
         with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Neighbourghoods</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_neighbourhoods).encode(
