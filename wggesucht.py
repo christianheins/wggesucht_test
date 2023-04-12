@@ -778,6 +778,10 @@ def main():
         df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
         st.markdown("<h3 style='text-align: left; color: orange;'>A little bit of Descriptive Statistics</h3>", unsafe_allow_html=True)
 
+        with st.expander("See explanation"):
+            st.write("Hi")
+            st.image("https://static.streamlit.io/examples/dice.jpg")
+
         col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
         with col1:
             #st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
