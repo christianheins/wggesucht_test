@@ -776,7 +776,7 @@ def main():
         st.markdown("""---""")
 
         df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
-        st.write(df_statistics.loc["75%"])
+        st.write(df_statistics.loc["75%"]["Miete"])
 
         col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
         with col1:
