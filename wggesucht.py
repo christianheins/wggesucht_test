@@ -815,6 +815,20 @@ def main():
             df_concat_pivot_releasedate = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Eintrag", values="Miete", aggfunc="count").reset_index()
             st.write(df_concat_pivot_releasedate)
 
+            st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
+            chart = alt.Chart(df_concat_neighbourhoods).encode(
+                x=alt.X('Eintrag:N'),
+                y=alt.Y('Eintrag:Q', sort=None), #use 'sort=None' to preserve the order of categories
+                text=alt.Text('Eintrag', format='.1f')
+            )
+            #Combine bar chart with text chart, weird isnt?
+
+            #wholechart = chart.mark_bar(color="orange") + chart.mark_text(align='left', dx=8, color="black")
+
+            wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
+
+            st.altair_chart(wholechart.interactive(), use_container_width=True)
+
         with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Neighbourghoods</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_neighbourhoods).encode(
