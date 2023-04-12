@@ -727,7 +727,7 @@ def main():
     #Filtering a bit more the dataframe
     dataframe_filter1 = df_concat["Größe"] > 9
     dataframe_filter2 = df_concat["Miete"] > 9
-    df_concat = df_concat[dataframe_filter1 | ]
+    df_concat = df_concat[dataframe_filter1]
 
     def add_logo():
         st.markdown(
