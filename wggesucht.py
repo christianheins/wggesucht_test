@@ -857,7 +857,7 @@ def main():
             chart = alt.Chart(df_concat_neighbourhoods_filtered).mark_arc(innerRadius=90).encode(
                 theta='Eintrag:Q',
                 color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
-                tooltip=['Neighbourhood'],
+                tooltip=['Neighbourhood', 'Eintrag:Q'],
             )
 
             chart = chart.configure_legend(
