@@ -850,11 +850,11 @@ def main():
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col2:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Neighbourghoods</h6>", unsafe_allow_html=True)
-            chart = alt.Chart(source).mark_arc(innerRadius=90).encode(
-                theta='Value:Q',
-                color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
-                tooltip=['Value:Q'],
+            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods</h6>", unsafe_allow_html=True)
+            chart = alt.Chart(df_concat_neighbourhoods).mark_arc(innerRadius=90).encode(
+                theta='Eintrag:Q',
+                color=alt.Color('Neighbourhood', scale=alt.Scale(scheme='category10')),
+                tooltip=['Eintrag:Q'],
             )
             chart = chart.configure_legend(
                 orient='left'
