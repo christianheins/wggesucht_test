@@ -838,26 +838,6 @@ def main():
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
 
-            df_concat_pivot_releasedate = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Eintrag", values="Miete", aggfunc={"Miete":["count","mean"]}).reset_index()
-            df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'], format='%d.%m.%Y', dayfirst=True)
-            df_concat_pivot_releasedate.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
-            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%m/%d')
-
-            st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
-
-            chart = alt.Chart(df_concat_pivot_releasedate).encode(
-                x=alt.X('count:Q'),
-                y=alt.Y('Eintrag:N', sort=None), #use 'sort=None' to preserve the order of categories
-                text=alt.Text('count', format='.1f')
-            )
-            #Combine bar chart with text chart, weird isnt?
-
-            #wholechart = chart.mark_bar(color="orange") + chart.mark_text(align='left', dx=8, color="black")
-
-            wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
-
-            st.altair_chart(wholechart.interactive(), use_container_width=True)
-
             st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Chart</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_endofleaseterm).encode(
                 x=alt.X('Lease term:Q'),
@@ -886,6 +866,25 @@ def main():
 
         with col3:
             st.write("Hi")
+            df_concat_pivot_releasedate = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Eintrag", values="Miete", aggfunc={"Miete":["count","mean"]}).reset_index()
+            df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'], format='%d.%m.%Y', dayfirst=True)
+            df_concat_pivot_releasedate.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
+            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%m/%d')
+
+            st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
+
+            chart = alt.Chart(df_concat_pivot_releasedate).encode(
+                x=alt.X('count:Q'),
+                y=alt.Y('Eintrag:N', sort=None), #use 'sort=None' to preserve the order of categories
+                text=alt.Text('count', format='.1f')
+            )
+            #Combine bar chart with text chart, weird isnt?
+
+            #wholechart = chart.mark_bar(color="orange") + chart.mark_text(align='left', dx=8, color="black")
+
+            wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
+
+            st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
         st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
