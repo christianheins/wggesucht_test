@@ -776,22 +776,22 @@ def main():
 
         col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
         with col1:
-            #st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
+            st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
             st.metric("Average rent", value="{:,.0f} €".format(df_concat["Miete"].mean()))
             st.metric("Standard deviation rent", value="{:,.0f} €".format(df_concat["Miete"].std()))
             st.metric("Max rent", value="{:,.0f} €".format(df_concat["Miete"].max()))
         with col2:
-            #st.metric("Min size", value="{:,.0f} SQM".format(df_concat["Größe"].min()))
+            st.metric("Min size", value="{:,.0f} SQM".format(df_concat["Größe"].min()))
             st.metric("Average size", value="{:,.0f} SQM".format(df_concat["Größe"].mean()))
             st.metric("Standard deviation size", value="{:,.0f} SQM".format(df_concat["Größe"].std()))
             st.metric("Max size", value="{:,.0f} SQM".format(df_concat["Größe"].max()))
         with col3:
-            #st.metric("Min EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].min()))
+            st.metric("Min EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].min()))
             st.metric("Average EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].mean()))
             st.metric("Standard deviation EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].std()))
             st.metric("Max EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].max()))
         with col4:
-            #st.metric("Min lease term", value="{:,.0f} months".format(df_concat["Lease term"].min()))
+            st.metric("Min lease term", value="{:,.0f} months".format(df_concat["Lease term"].min()))
             st.metric("Average lease term", value="{:,.0f} months".format(df_concat["Lease term"].mean()))
             st.metric("Standard deviation lease term", value="{:,.0f} months".format(df_concat["Lease term"].std()))
             st.metric("Longest lease term", value="{:,.0f} months".format(df_concat["Lease term"].max()))
