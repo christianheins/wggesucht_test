@@ -536,7 +536,7 @@ def main():
 
                 elif str(neighbourhood).__contains__("mitte"):
                     print("mitte")
-                    neighbourhoods_clean.append("mitte")
+                    neighbourhoods_clean.append("Mitte")
 
                 elif str(neighbourhood).__contains__("Mitte"):
                     print("Mitte")
@@ -636,7 +636,7 @@ def main():
 
                 elif str(neighbourhood).__contains__("wedding"):
                     print("wedding")
-                    neighbourhoods_clean.append("wedding")
+                    neighbourhoods_clean.append("Wedding")
 
                 elif str(neighbourhood).__contains__("Weißensee"):
                     print("Weißensee")
@@ -861,6 +861,7 @@ def main():
         df_concat['lat'] = pd.to_numeric(df_concat['lat'])
         df_concat['lon'] = pd.to_numeric(df_concat['lon'])
         st.write(df_concat)
+        st.markdown("<h3 style='text-align: center; color: orange;'>Map of neighbourhoods</h3>", unsafe_allow_html=True)
         st.map(df_concat)
 
         with st.container():
