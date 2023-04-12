@@ -778,6 +778,17 @@ def main():
         df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
         st.markdown("<h3 style='text-align: left; color: orange;'>A little bit of Descriptive Statistics</h3>", unsafe_allow_html=True)
 
+        col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+
+        with col1:
+            st.metric("Average rent", value="{:,.0f} €".format(df_concat["Miete"].mean()))
+        with col2:
+            st.metric("Average size", value="{:,.0f} SQM".format(df_concat["Größe"].mean()))
+        with col3:
+            st.metric("Average EUR per SQM", value="{:,.0f} € per SQM".format(df_concat["EUR / SQM"].mean()))
+        with col4:
+            st.metric("Average lease term", value="{:,.0f} months".format(df_concat["Lease term"].mean()))
+
         with st.expander("Open for more"):
 
             col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
