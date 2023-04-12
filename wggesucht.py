@@ -866,9 +866,7 @@ def main():
                 tooltip=['Eintrag:Q'],
             )
 
-            chart = chart.configure_legend(
-                orient='left'
-            )
+
 
             wholechart = alt.layer(chart, chart2)
             st.altair_chart(wholechart.interactive(), use_container_width=True)
