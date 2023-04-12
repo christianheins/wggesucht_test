@@ -817,8 +817,8 @@ def main():
 
             st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_neighbourhoods).encode(
-                x=alt.X('Eintrag:N'),
-                y=alt.Y('Miete:Q', sort=None), #use 'sort=None' to preserve the order of categories
+                x=alt.X('Miete:Q'),
+                y=alt.Y('Eintrag:N', sort=None), #use 'sort=None' to preserve the order of categories
                 text=alt.Text('Eintrag', format='.1f')
             )
             #Combine bar chart with text chart, weird isnt?
