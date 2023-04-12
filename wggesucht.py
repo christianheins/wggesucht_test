@@ -844,6 +844,7 @@ def main():
             df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%m/%d')
 
             st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
+
             chart = alt.Chart(df_concat_pivot_releasedate).encode(
                 x=alt.X('count:Q'),
                 y=alt.Y('Eintrag:N', sort=None), #use 'sort=None' to preserve the order of categories
@@ -854,6 +855,17 @@ def main():
             #wholechart = chart.mark_bar(color="orange") + chart.mark_text(align='left', dx=8, color="black")
 
             wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
+
+            st.altair_chart(wholechart.interactive(), use_container_width=True)
+
+            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Chart</h6>", unsafe_allow_html=True)
+            chart = alt.Chart(df_concat_endofleaseterm).encode(
+                x=alt.X('Lease term:Q'),
+                y=alt.Y('Eintrag:Q', sort=None), #use 'sort=None' to preserve the order of categories
+                text=alt.Text('Eintrag', format='.1f')
+            )
+            #Combine bar chart with text chart, weird isnt?
+            wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='center', dy=-5, color="black"))
 
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
