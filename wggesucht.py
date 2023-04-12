@@ -821,6 +821,9 @@ def main():
                 st.metric("75% of the leases are up to", value="{:,.0f} months".format(df_statistics.loc["75%"]["Lease term"]))
                 st.metric("Longest lease term", value="{:,.0f} months".format(df_concat["Lease term"].max()))
 
+            st.markdown("<h6 style='text-align: center; color: orange;'>Numerical values described</h6>", unsafe_allow_html=True)
+            st.write(df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe())
+
         st.markdown("""---""")
         df_concat_neighbourhoods = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Neighbourhood", values="Eintrag", aggfunc="count").reset_index()
         df_concat_neighbourhoods.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
@@ -921,16 +924,11 @@ def main():
         st.markdown("<h6 style='text-align: center; color: orange;'>Properties table</h6>", unsafe_allow_html=True)
         st.write(df_concat[['Name', 'Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood', 'frei ab', 'frei bis','frei bis (Year - Month)', 'Lease term', 'Latitude', 'Longitude']])
 
-        col1, col2, col3 = st.columns([0.4, 0.2, 0.4])
-
+        col1, col2 = st.columns([0.5, 0.5])
         with col1:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Numerical values described</h6>", unsafe_allow_html=True)
-
-            st.write(df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe())
-        with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Lease term exact count</h6>", unsafe_allow_html=True)
             st.write(df_concat_endofleaseterm)
-        with col3:
+        with col2:
             st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Chart</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_endofleaseterm).encode(
                 x=alt.X('Lease term:Q'),
