@@ -783,6 +783,8 @@ def main():
             #st.metric("Min rent", value="{:,.0f} €".format(df_concat["Miete"].min()))
             st.metric("Average rent", value="{:,.0f} €".format(df_concat["Miete"].mean()))
             st.metric("Standard deviation rent", value="{:,.0f} €".format(df_concat["Miete"].std()))
+            st.metric("75% of the leases are up to", value="{:,.0f} €".format(df_statistics.loc["25%"]["Miete"]))
+            st.metric("75% of the leases are up to", value="{:,.0f} €".format(df_statistics.loc["50%"]["Miete"]))
             st.metric("75% of the leases are up to", value="{:,.0f} €".format(df_statistics.loc["75%"]["Miete"]))
             st.metric("Max rent", value="{:,.0f} €".format(df_concat["Miete"].max()))
         with col2:
