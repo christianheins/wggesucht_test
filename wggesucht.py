@@ -865,7 +865,8 @@ def main():
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
 
-            chart = alt.Chart(df_concat_neighbourhoods).encode(
+            df_concat_neighbourhoods_filtered = df_concat_neighbourhoods.iloc[:20]
+            chart = alt.Chart(df_concat_neighbourhoods_filtered).encode(
                 x=alt.X('Eintrag:Q'),
                 y=alt.Y('Neighbourhood:N', sort=None), #use 'sort=None' to preserve the order of categories
                 text=alt.Text('Eintrag:Q', format='.1f'),
@@ -876,6 +877,7 @@ def main():
 
             wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
 
+            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods</h6>", unsafe_allow_html=True)
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col3:
