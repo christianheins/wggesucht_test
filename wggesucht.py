@@ -817,9 +817,9 @@ def main():
 
             st.markdown("<h6 style='text-align: center; color: orange;'>Number of entries per release date</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_pivot_releasedate).encode(
-                x=alt.X('Miete:Q'),
+                x=alt.X('count:Q'),
                 y=alt.Y('Eintrag:N', sort=None), #use 'sort=None' to preserve the order of categories
-                text=alt.Text('Miete', format='.1f')
+                text=alt.Text('count', format='.1f')
             )
             #Combine bar chart with text chart, weird isnt?
 
