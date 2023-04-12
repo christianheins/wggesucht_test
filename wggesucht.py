@@ -816,7 +816,7 @@ def main():
 
             st.write(df_concat_pivot_releasedate)
 
-            df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'])
+            df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'], format='%d.%m.%Y', dayfirst=True)
 
             st.write(df_concat_pivot_releasedate)
 
