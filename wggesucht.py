@@ -459,33 +459,85 @@ def main():
             for neighbourhood in neighbourhoods_dirty:
                 print(str(neighbourhood))
 
-                if str(neighbourhood).__contains__("Alt- Treptower"):
+                if str(neighbourhood).__contains__("Altglienicke"):
+                    print("Altglienicke")
+                    neighbourhoods_clean.append("Altglienicke")
+
+                elif str(neighbourhood).__contains__("Alt- Treptower"):
                     print("Alt- Treptower")
-                    neighbourhoods_clean.append("Alt- Treptower")
+                    neighbourhoods_clean.append("Alt-Treptow")
 
                 elif str(neighbourhood).__contains__("Blankenburg"):
                     print("Blankenburg")
                     neighbourhoods_clean.append("Blankenburg")
+
+                elif str(neighbourhood).__contains__("Buch"):
+                    print("Buch")
+                    neighbourhoods_clean.append("Buch")
 
                 elif str(neighbourhood).__contains__("Charlottenburg"):
                     print("Charlottenburg")
                     neighbourhoods_clean.append("Charlottenburg")
 
                 elif str(neighbourhood).__contains__("Friedrichshain"):
-                    print("Kreuzberg")
+                    print("Friedrichshain")
                     neighbourhoods_clean.append("Friedrichshain")
+
+                elif str(neighbourhood).__contains__("Friedrischain"):
+                    print("Friedrischain")
+                    neighbourhoods_clean.append("Friedrichshain")
+
+                elif str(neighbourhood).__contains__("Gesundbrunnen"):
+                    print("Gesundbrunnen")
+                    neighbourhoods_clean.append("Gesundbrunnen")
+
+                elif str(neighbourhood).__contains__("Halensee"):
+                    print("Halensee")
+                    neighbourhoods_clean.append("Halensee")
+
+                elif str(neighbourhood).__contains__("Hellersdorf"):
+                    print("Hellersdorf")
+                    neighbourhoods_clean.append("Hellersdorf")
 
                 elif str(neighbourhood).__contains__("Hermsdorf"):
                     print("Hermsdorf")
                     neighbourhoods_clean.append("Hermsdorf")
 
+                elif str(neighbourhood).__contains__("Karow"):
+                    print("Karow")
+                    neighbourhoods_clean.append("Karow")
+
+                elif str(neighbourhood).__contains__("Karlshorst"):
+                    print("Karlshorst")
+                    neighbourhoods_clean.append("Karlshorst")
+
+                elif str(neighbourhood).__contains__("Kleinmachnow"):
+                    print("Kleinmachnow")
+                    neighbourhoods_clean.append("Kleinmachnow")
+
                 elif str(neighbourhood).__contains__("Kreuzberg"):
                     print("Kreuzberg")
                     neighbourhoods_clean.append("Kreuzberg")
 
+                elif str(neighbourhood).__contains__("kreuzberg"):
+                    print("kreuzberg")
+                    neighbourhoods_clean.append("Kreuzberg")
+
+                elif str(neighbourhood).__contains__("Köpenick"):
+                    print("Köpenick")
+                    neighbourhoods_clean.append("Köpenick")
+
+                elif str(neighbourhood).__contains__("Lankwitz"):
+                    print("Lankwitz")
+                    neighbourhoods_clean.append("Lankwitz")
+
                 elif str(neighbourhood).__contains__("Lichtenberg"):
                     print("Lichtenberg")
                     neighbourhoods_clean.append("Lichtenberg")
+
+                elif str(neighbourhood).__contains__("Lichterfelde"):
+                    print("Lichterfelde")
+                    neighbourhoods_clean.append("Lichterfelde")
 
                 elif str(neighbourhood).__contains__("Marienfelde"):
                     print("Mitte")
@@ -499,6 +551,10 @@ def main():
                     print("Marzahn")
                     neighbourhoods_clean.append("Marzahn")
 
+                elif str(neighbourhood).__contains__("mitte"):
+                    print("mitte")
+                    neighbourhoods_clean.append("mitte")
+
                 elif str(neighbourhood).__contains__("Mitte"):
                     print("Mitte")
                     neighbourhoods_clean.append("Mitte")
@@ -510,6 +566,14 @@ def main():
                 elif str(neighbourhood).__contains__("Neukölln"):
                     print("Neukölln")
                     neighbourhoods_clean.append("Neukölln")
+
+                elif str(neighbourhood).__contains__("Nikolassee"):
+                    print("Nikolassee")
+                    neighbourhoods_clean.append("Nikolassee")
+
+                elif str(neighbourhood).__contains__("Niederschönhausen"):
+                    print("Niederschönhausen")
+                    neighbourhoods_clean.append("Niederschönhausen")
 
                 elif str(neighbourhood).__contains__("Oberschöneweide"):
                     print("Oberschöneweide")
@@ -527,6 +591,22 @@ def main():
                     print("Reinickendorf")
                     neighbourhoods_clean.append("Reinickendorf")
 
+                elif str(neighbourhood).__contains__("Rummelsburg"):
+                    print("Rummelsburg")
+                    neighbourhoods_clean.append("Rummelsburg")
+
+                elif str(neighbourhood).__contains__("Siemensstadt"):
+                    print("Siemensstadt")
+                    neighbourhoods_clean.append("Siemensstadt")
+
+                elif str(neighbourhood).__contains__("Schillerkiez"):
+                    print("Schillerkiez")
+                    neighbourhoods_clean.append("Schillerkiez")
+
+                elif str(neighbourhood).__contains__("Schmargendorf"):
+                    print("Schmargendorf")
+                    neighbourhoods_clean.append("Schmargendorf")
+
                 elif str(neighbourhood).__contains__("Schöneberg"):
                     print("Schöneberg")
                     neighbourhoods_clean.append("Schöneberg")
@@ -535,24 +615,60 @@ def main():
                     print("Spandau")
                     neighbourhoods_clean.append("Spandau")
 
+                elif str(neighbourhood).__contains__("spandau"):
+                    print("spandau")
+                    neighbourhoods_clean.append("Spandau")
+
+                elif str(neighbourhood).__contains__("Steglitz"):
+                    print("Steglitz")
+                    neighbourhoods_clean.append("Steglitz")
+
+                elif str(neighbourhood).__contains__("Steglitz-Zehlendorf"):
+                    print("Steglitz-Zehlendorf")
+                    neighbourhoods_clean.append("Steglitz-Zehlendorf")
+
+                elif str(neighbourhood).__contains__("Tegel"):
+                    print("Tegel")
+                    neighbourhoods_clean.append("Tegel")
+
+                elif str(neighbourhood).__contains__("Tiergarten"):
+                    print("Tiergarten")
+                    neighbourhoods_clean.append("Tiergarten")
+
                 elif str(neighbourhood).__contains__("Tempelhof"):
                     print("Tempelhof")
                     neighbourhoods_clean.append("Tempelhof")
 
+                elif str(neighbourhood).__contains__("Treptow"):
+                    print("Treptow")
+                    neighbourhoods_clean.append("Treptow")
+
+                elif str(neighbourhood).__contains__("Wannsee"):
+                    print("Wannsee")
+                    neighbourhoods_clean.append("Wannsee")
+
                 elif str(neighbourhood).__contains__("Wedding"):
                     print("Wedding")
                     neighbourhoods_clean.append("Wedding")
+
+                elif str(neighbourhood).__contains__("wedding"):
+                    print("wedding")
+                    neighbourhoods_clean.append("wedding")
 
                 elif str(neighbourhood).__contains__("Weißensee"):
                     print("Weißensee")
                     neighbourhoods_clean.append("Weißensee")
 
                 elif str(neighbourhood).__contains__("Wilmersdorf"):
-                    print("Wedding")
-                    neighbourhoods_clean.append("Wedding")
+                    print("Wilmersdorf")
+                    neighbourhoods_clean.append("Wilmersdorf")
+
+                elif str(neighbourhood).__contains__("Zehlendorf"):
+                    print("Zehlendorf")
+                    neighbourhoods_clean.append("Zehlendorf")
 
                 else:
-                    neighbourhoods_clean.append(("NA"))
+                    neighbourhoods_clean.append(("Berlin"))
             df_concat["Neighbourhood"] = neighbourhoods_clean
 
             #Get periods of end dates
