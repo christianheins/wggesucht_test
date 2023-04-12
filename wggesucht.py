@@ -816,15 +816,13 @@ def main():
 
             st.write(df_concat_pivot_releasedate)
 
-
             df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'])
-
-            df_concat_pivot_releasedate.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
 
             st.write(df_concat_pivot_releasedate)
 
+            df_concat_pivot_releasedate.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
 
-            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%M/%D')
+            df_concat_pivot_releasedate['Eintrag'] = df_concat_pivot_releasedate['Eintrag'].dt.strftime('%Y/%m/%d')
 
             st.write(df_concat_pivot_releasedate)
 
