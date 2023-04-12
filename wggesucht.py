@@ -860,6 +860,7 @@ def main():
                 orient='left'
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
+
             chart = alt.Chart(df_concat_neighbourhoods).encode(
                 x=alt.X('Eintrag:Q'),
                 y=alt.Y('Neighbourhood:N', sort=None), #use 'sort=None' to preserve the order of categories
@@ -874,7 +875,16 @@ def main():
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col3:
-            st.write("Hi")
+            st.markdown("<h6 style='text-align: center; color: orange;'>Release dates</h6>", unsafe_allow_html=True)
+            chart = alt.Chart(source).mark_arc(innerRadius=90).encode(
+                    theta='Value:Q',
+                    color=alt.Color('Category', scale=alt.Scale(scheme='category10')),
+                    tooltip=['Value:Q'],
+                )
+            chart = chart.configure_legend(
+                orient='left'
+            )
+            st.altair_chart(chart.interactive(), use_container_width=True)
             df_concat_pivot_releasedate = df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Eintrag", values="Miete", aggfunc={"Miete":["count","mean"]}).reset_index()
             df_concat_pivot_releasedate['Eintrag'] = pd.to_datetime(df_concat_pivot_releasedate['Eintrag'], format='%d.%m.%Y', dayfirst=True)
             df_concat_pivot_releasedate.sort_values(by=["Eintrag"], ascending=[False], inplace=True)
