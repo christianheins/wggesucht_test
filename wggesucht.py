@@ -852,7 +852,7 @@ def main():
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         st.markdown("""---""")
-        st.markdown("<h3 style='text-align: center; color: orange;'>Map</h6>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: orange;'>Map of neighbourhoods</h6>", unsafe_allow_html=True)
 
         #df_concat.drop(df_concat[df_concat["Latitude"].str() != "Location not found: NA"], inplace=True)
         latitudes = ["Location not found: Wedding","Location not found: Reinickendorf","Location not found: Prenzlauer Berg","Location not found: Neukölln","Location not found: NA","Location not found: Moabit","Location not found: Mitte","Location not found: Marienfelde","Location not found: Lichtenberg","Location not found: Kreuzberg","Location not found: Charlottenburg"]
@@ -861,7 +861,6 @@ def main():
         df_concat['lat'] = pd.to_numeric(df_concat['lat'])
         df_concat['lon'] = pd.to_numeric(df_concat['lon'])
         st.write(df_concat)
-        st.markdown("<h3 style='text-align: center; color: orange;'>Map of neighbourhoods</h3>", unsafe_allow_html=True)
         st.map(df_concat)
 
         with st.container():
