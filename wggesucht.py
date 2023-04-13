@@ -943,7 +943,7 @@ def main():
 
         st.write("This is outside the container")
 
-    if selected == "🏘️ Neighbourhoods":
+    if selected == "🫂 Neighbourhoods":
         df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhoods", aggfunc={"Miete":["count","mean"]})
         st.write(df_concat_pivot_neighbourhoods)
 
