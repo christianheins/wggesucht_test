@@ -662,10 +662,8 @@ def main():
             #Get locations of each neighbourhood
             addresses = df_concat["Neighbourhood"].to_list()
             print(len(addresses))
-
             latitudes = []
             longitudes = []
-
             for location in addresses:
                 try:
                     url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(location) +'?format=json'
@@ -773,7 +771,7 @@ def main():
         with col3:
             with st.expander("INSTRUCTIONS"):
                 st.markdown("<h6 style='text-align: left; color: red;'>Instructions</h6>", unsafe_allow_html=True)
-                st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>This web applications is capturing a snapshot of the last months entries as of the date the csv file was lastly refreshed</li>", unsafe_allow_html=True)
+                st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>This web applications is capturing a snapshot of the last months entries as of the date the csv file was lastly refreshed from here: 'https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html?pagination=1&pu='</li>", unsafe_allow_html=True)
                 st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>Please use as a guide for only the WG Gesucht portal, this data is not completly representative.</li>", unsafe_allow_html=True)
         st.markdown("""---""")
 
