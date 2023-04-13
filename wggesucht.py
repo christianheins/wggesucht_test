@@ -22,8 +22,6 @@ def main():
         'About': "# This is a header. This is an *extremely* cool app!"
     })
 
-    st.markdown("<h1 style='text-align: center; color: orange;'>Property Analysis</h1>", unsafe_allow_html=True)
-
     #Pages
     page_real_estate_general_dashboard = "wggesucht.py"
     page_maps = "pages/maps.py"
@@ -762,6 +760,7 @@ def main():
 
 
     if selected == "🏘️ Apartments":
+        st.markdown("<h1 style='text-align: center; color: orange;'>Property Analysis</h1>", unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns([0.2, 0.2, 0.6])
         with col1:
@@ -944,7 +943,7 @@ def main():
         st.write("This is outside the container")
 
     if selected == "🫂 Neighbourhoods":
-        st.markdown("<h3 style='text-align: center; color: grey;'>Neighbourhood Analysis</h3>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: orange;'>Neighbourhood Analysis</h1>", unsafe_allow_html=True)
         st.write(df_concat)
         df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean","sum"], "Größe":["count", "mean", "sum"]})
         st.write(df_concat_pivot_neighbourhoods)
