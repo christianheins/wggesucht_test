@@ -22,9 +22,6 @@ def main():
         'About': "# This is a header. This is an *extremely* cool app!"
     })
 
-    with open('style.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
     st.markdown("<h1 style='text-align: center; color: orange;'>Property Analysis</h1>", unsafe_allow_html=True)
 
     #Pages
@@ -949,6 +946,9 @@ def main():
 
     if selected == "🏘️ Neighbourhoods":
         st.write("Hello")
+
+    with open('style.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
