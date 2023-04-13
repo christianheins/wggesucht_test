@@ -944,8 +944,8 @@ def main():
         st.write("This is outside the container")
 
     if selected == "🫂 Neighbourhoods":
-        df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhoods", aggfunc={"Miete": "count"})
-        st.write(df_concat_pivot_neighbourhoods)}
+        df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhoods", aggfunc={"Miete":["count","mean"]})
+        st.write(df_concat_pivot_neighbourhoods)
 
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
