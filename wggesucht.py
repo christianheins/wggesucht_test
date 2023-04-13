@@ -945,7 +945,7 @@ def main():
 
     if selected == "🫂 Neighbourhoods":
         st.write(df_concat)
-        df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean"], "Größe":["count", "mean"]})
+        df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean","sum"], "Größe":["count", "mean", "sum"]})
         st.write(df_concat_pivot_neighbourhoods)
 
     with open('style.css') as f:
