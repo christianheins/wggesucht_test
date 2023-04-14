@@ -745,7 +745,7 @@ def main():
                     background-image: url(https://raw.githubusercontent.com/christianheins/wggesucht/main/images/5.jpg);
                     background-repeat: no-repeat;
                     background-size: contain;
-                    background-position: 50% 0%;
+                    background-position: 60% 0%;
                     padding-top: 80px;
                 }
                 [data-testid="stSidebarNav"]::before {
@@ -778,8 +778,6 @@ def main():
         with col3:
             df_concat['Eintrag'] = pd.to_datetime(df_concat['Eintrag'], format='%d.%m.%Y', dayfirst=True)
             oldestdate = df_concat["Eintrag"].min()
-            st.write(oldestdate)
-            st.write(df_concat["Eintrag"])
             st.metric("Oldest entry date", value=str(oldestdate))
 
         st.markdown("""---""")
