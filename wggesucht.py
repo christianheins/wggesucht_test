@@ -746,7 +746,7 @@ def main():
                     background-repeat: no-repeat;
                     background-size: contain;
                     background-position: 50% 0%;
-                    padding-top: 90px;
+                    padding-top: 110px;
                 }
                 [data-testid="stSidebarNav"]::before {
                     content: "Pages";
