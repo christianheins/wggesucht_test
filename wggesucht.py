@@ -720,8 +720,10 @@ def main():
         st.write(f'File last created on: {dt_m}')
         st.markdown("""---""")
         st.markdown("<a href='https://www.linkedin.com/in/christian-h-0545aaa1/'>🔗 Find me on LinkedIn</a>", unsafe_allow_html=True)
+        st.markdown("<a href='https://github.com/christianheins'>🔗 Find me on Github</a>", unsafe_allow_html=True)
 
-    df_concat = pd.read_csv(nameofdataframe)
+
+df_concat = pd.read_csv(nameofdataframe)
 
     #Filtering a bit more the dataframe
     dataframe_filter1 = df_concat["Größe"] > 9
