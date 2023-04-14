@@ -770,7 +770,7 @@ def main():
             st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>Please use as a guide for only the WG Gesucht portal, this data is not completly representative. It's just an example of the powerful features Steramlit has to offer. Logos and images are WG Gesuchts property and not mine.</li>", unsafe_allow_html=True)
 
     if selected == "🏘️ Apartments":
-        st.markdown("<h1 style='text-align: center; color: orange;'>🏘️ Property Analysis</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: orange;'>🏘️ Property Analysis 🏘</h1>", unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns([0.2, 0.2, 0.6])
         with col1:
