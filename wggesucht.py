@@ -745,7 +745,7 @@ def main():
                     background-image: url(https://raw.githubusercontent.com/christianheins/wggesucht/main/images/5.jpg);
                     background-repeat: no-repeat;
                     background-size: contain;
-                    background-position: 50% 0%;
+                    background-position: 0% 0%;
                     padding-top: 120px;
                 }
                 [data-testid="stSidebarNav"]::before {
