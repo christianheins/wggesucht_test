@@ -777,7 +777,7 @@ def main():
             st.metric("Unique neighbourhoods", value="{:,.0f}".format(len(df_concat[['Rubrik', 'Eintrag', 'Miete', 'Größe', 'EUR / SQM', 'Stadtteil', 'Neighbourhood']].pivot_table(index="Neighbourhood", values="Eintrag", aggfunc="count").reset_index())))
         with col3:
             oldestdate = df_concat["Eintrag"].min()
-            st.write(df_concat["Eintraf"])
+            st.write(df_concat["Eintrag"])
             st.metric("Oldest entry date", value=oldestdate)
 
         st.markdown("""---""")
