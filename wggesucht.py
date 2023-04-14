@@ -847,7 +847,7 @@ def main():
             )
             st.altair_chart(chart.interactive(), use_container_width=True)
 
-            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Chart</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Bar Chart</h6>", unsafe_allow_html=True)
             chart = alt.Chart(df_concat_endofleaseterm).encode(
                 x=alt.X('Lease term:Q'),
                 y=alt.Y('Eintrag:Q', sort=None), #use 'sort=None' to preserve the order of categories
