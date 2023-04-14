@@ -718,7 +718,7 @@ def main():
         # convert timestamp into DateTime object
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
         st.write(f'File last created on: {dt_m}')
-    st.markdown("<a href='https://airtable.com/app5p6oAnyclgWPM9/pagFlz6Ae0kMjHNNu?RwACb=rec5EKs8ZMeOsygjH&vH2xA=reczG0JNSvJCezJDx'>Click here to go the disposals dashboard</a>", unsafe_allow_html=True)
+    st.markdown("<a href='https://www.linkedin.com/in/christian-h-0545aaa1/'>Find me on LinkedIn</a>", unsafe_allow_html=True)
 
     df_concat = pd.read_csv(nameofdataframe)
 
