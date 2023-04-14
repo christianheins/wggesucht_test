@@ -835,7 +835,7 @@ def main():
             df_concat_pivot_longterm = df_concat["Lease term"].isna().sum()
             df_concat_pivot_shortterm = len(df_concat[df_concat["Lease term"] > 0])
             source = pd.DataFrame({"Category": ["Indefinite term", "Limited term"], "Value": [df_concat_pivot_longterm, df_concat_pivot_shortterm]})
-            st.markdown("<h6 style='text-align: center; color: orange;'>Lease terms</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Lease term Donut</h6>", unsafe_allow_html=True)
 
             chart = alt.Chart(source).mark_arc(innerRadius=90).encode(
                 theta='Value:Q',
@@ -859,7 +859,7 @@ def main():
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col2:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods Donut</h6>", unsafe_allow_html=True)
 
             df_concat_neighbourhoods_filtered = df_concat_neighbourhoods.iloc[:10]
 
@@ -886,7 +886,7 @@ def main():
 
             wholechart = alt.layer(chart.mark_bar(color="orange"), chart.mark_text(align='left', dx=8, color="black"))
 
-            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Top 20 Neighbourhoods Bar Chart</h6>", unsafe_allow_html=True)
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col3:
