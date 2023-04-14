@@ -723,7 +723,7 @@ def main():
         st.markdown("<a href='https://github.com/christianheins'>🔗 Find me on Github</a>", unsafe_allow_html=True)
 
 
-df_concat = pd.read_csv(nameofdataframe)
+    df_concat = pd.read_csv(nameofdataframe)
 
     #Filtering a bit more the dataframe
     dataframe_filter1 = df_concat["Größe"] > 9
