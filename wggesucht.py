@@ -740,7 +740,7 @@ def main():
                     padding-top: 100px;
                 }
                 [data-testid="stSidebarNav"] {
-                    background-image: url(https://raw.githubusercontent.com/christianheins/wggesucht/main/images/5.jpg);
+                    background-image: url(https://raw.githubusercontent.com/christianheins/wggesucht/main/images/2.jpg);
                     background-repeat: no-repeat;
                     background-size: contain;
                     background-position: 50% 0%;
