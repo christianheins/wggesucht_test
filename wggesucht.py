@@ -719,8 +719,6 @@ def main():
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
         st.write(f'File last created on: {dt_m}')
         st.markdown("""---""")
-        st.markdown("<a href='https://www.linkedin.com/in/christian-h-0545aaa1/'>🔗 Find me on LinkedIn</a>", unsafe_allow_html=True)
-        st.markdown("<a href='https://github.com/christianheins'>🔗 Find me on Github</a>", unsafe_allow_html=True)
 
 
     df_concat = pd.read_csv(nameofdataframe)
@@ -761,11 +759,15 @@ def main():
             unsafe_allow_html=True,
         )
     add_logo()
-
-    with st.expander("INSTRUCTIONS"):
-        st.markdown("<h6 style='text-align: left; color: red;'>Instructions</h6>", unsafe_allow_html=True)
-        st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>This web applications is capturing a snapshot of the last months entries as of the date the csv file was lastly refreshed from here: 'https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html?pagination=1&pu='</li>", unsafe_allow_html=True)
-        st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>Please use as a guide for only the WG Gesucht portal, this data is not completly representative. It's just an example of the powerful features Steramlit has to offer. Logos and images are WG Gesuchts property and not mine.</li>", unsafe_allow_html=True)
+    col1, col2 = st.columns([0.2, 0.8])
+    with col1:
+        st.markdown("<a href='https://www.linkedin.com/in/christian-h-0545aaa1/'>🔗 Find me on LinkedIn</a>", unsafe_allow_html=True)
+        st.markdown("<a href='https://github.com/christianheins'>🔗 Find me on Github</a>", unsafe_allow_html=True)
+    with col2:
+        with st.expander("INSTRUCTIONS"):
+            st.markdown("<h6 style='text-align: left; color: red;'>Instructions</h6>", unsafe_allow_html=True)
+            st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>This web applications is capturing a snapshot of the last months entries as of the date the csv file was lastly refreshed from here: 'https://www.wg-gesucht.de/1-zimmer-wohnungen-und-wohnungen-in-Berlin.8.1+2.0.0.html?pagination=1&pu='</li>", unsafe_allow_html=True)
+            st.markdown(f"<li style='text-align: left; color: grey; font-size: 12px;'>Please use as a guide for only the WG Gesucht portal, this data is not completly representative. It's just an example of the powerful features Steramlit has to offer. Logos and images are WG Gesuchts property and not mine.</li>", unsafe_allow_html=True)
 
     if selected == "🏘️ Apartments":
         st.markdown("<h1 style='text-align: center; color: orange;'>🏘️ Property Analysis</h1>", unsafe_allow_html=True)
