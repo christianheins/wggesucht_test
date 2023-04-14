@@ -764,7 +764,7 @@ def main():
 
 
     if selected == "🏘️ Apartments":
-        st.markdown("<h1 style='text-align: center; color: orange;'>Property Analysis</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: orange;'>🏘️ Property Analysis</h1>", unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns([0.2, 0.2, 0.6])
         with col1:
@@ -779,7 +779,7 @@ def main():
         st.markdown("""---""")
 
         df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
-        st.markdown("<h3 style='text-align: left; color: orange;'>A little bit of Descriptive Statistics</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: left; color: orange;'>📊 A little bit of Descriptive Statistics</h3>", unsafe_allow_html=True)
 
         col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
 
