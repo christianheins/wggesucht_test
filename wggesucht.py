@@ -719,6 +719,8 @@ def main():
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
         st.write(f'File last created on: {dt_m}')
         st.markdown("<a href='https://www.linkedin.com/in/christian-h-0545aaa1/'>🔗 Find me on LinkedIn</a>", unsafe_allow_html=True)
+        st.markdown("""---""")
+
     df_concat = pd.read_csv(nameofdataframe)
 
     #Filtering a bit more the dataframe
