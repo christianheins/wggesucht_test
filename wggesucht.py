@@ -40,7 +40,7 @@ def main():
         st.sidebar.header("Sections")
         selected = option_menu(
             menu_title="Menu",
-            options=["🏘️ Apartments", "🫂 Neighbourhoods"], #https://icons.getbootstrap.com/
+            options=["🏘️ Apartments", "🫂 Neighbourhoods", "📑 Sample contracts"], #https://icons.getbootstrap.com/
             orientation="vertical",
         )
 
@@ -947,6 +947,12 @@ def main():
         st.write("This is outside the container")
 
     if selected == "🫂 Neighbourhoods":
+        st.markdown("<h1 style='text-align: center; color: orange;'>Neighbourhood Analysis</h1>", unsafe_allow_html=True)
+        st.write(df_concat)
+        df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean","sum"], "Größe":["count", "mean", "sum"]})
+        st.write(df_concat_pivot_neighbourhoods)
+
+    if selected == "📑 Sample contracts":
         st.markdown("<h1 style='text-align: center; color: orange;'>Neighbourhood Analysis</h1>", unsafe_allow_html=True)
         st.write(df_concat)
         df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean","sum"], "Größe":["count", "mean", "sum"]})
