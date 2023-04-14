@@ -718,6 +718,7 @@ def main():
         # convert timestamp into DateTime object
         dt_m = dt.datetime.fromtimestamp(m_time).strftime("%d/%m/%Y - %H:%M:%S")
         st.write(f'File last created on: {dt_m}')
+    <a href="https://airtable.com/app5p6oAnyclgWPM9/pagFlz6Ae0kMjHNNu?RwACb=rec5EKs8ZMeOsygjH&vH2xA=reczG0JNSvJCezJDx">Click here to go the disposals dashboard</a>
 
     df_concat = pd.read_csv(nameofdataframe)
 
@@ -859,7 +860,7 @@ def main():
             st.altair_chart(wholechart.interactive(), use_container_width=True)
 
         with col2:
-            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods Donut</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center; color: orange;'>Top 10 Neighbourhoods by count</h6>", unsafe_allow_html=True)
 
             df_concat_neighbourhoods_filtered = df_concat_neighbourhoods.iloc[:10]
 
