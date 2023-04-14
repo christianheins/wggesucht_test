@@ -780,7 +780,7 @@ def main():
             oldestdate = df_concat["Eintrag"].min()
             st.write(oldestdate)
             st.write(df_concat["Eintrag"])
-            st.metric("Oldest entry date", value=oldestdate)
+            st.metric("Oldest entry date", value=str(oldestdate))
 
         st.markdown("""---""")
 
