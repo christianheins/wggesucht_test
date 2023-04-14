@@ -778,6 +778,9 @@ def main():
         with col3:
             st.write("Hello!")
 
+            oldestdate = df_concat["Eintrag"].min()
+            st.metric("Oldest entry date", value=oldestdate)
+
         st.markdown("""---""")
 
         df_statistics = df_concat[["Miete", "Größe", 'EUR / SQM', "Lease term"]].describe()
