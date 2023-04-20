@@ -14,14 +14,7 @@ def main():
     from github import InputFileContent
 
     pd.set_option('display.max_columns', None)
-
-    #Streamlit
-    st.set_page_config(page_title="WG Gesucht Analysis", layout="wide", initial_sidebar_state="expanded", menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    })
-
+    
     #Pages
     page_real_estate_general_dashboard = "streamlit_app.py"
     page_maps = "pages/maps.py"
@@ -32,6 +25,17 @@ def main():
             Page(page_maps, "Maps", "🗺️"),
         ]
     )
+    
+    #Streamlit
+    st.set_page_config(page_title="WG Gesucht Analysis", layout="wide", initial_sidebar_state="expanded", menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    })
+
+    with open('style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 
     nameofdataframe = "df_concat.csv"
 
@@ -962,10 +966,6 @@ def main():
         st.write(df_concat)
         df_concat_pivot_neighbourhoods = df_concat.pivot_table(index="Neighbourhood", aggfunc={"Miete":["count","mean","sum"], "Größe":["count", "mean", "sum"]})
         st.write(df_concat_pivot_neighbourhoods)
-
-    with open('style.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 
 if __name__ == "__main__":
     main()
